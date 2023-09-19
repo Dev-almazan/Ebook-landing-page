@@ -72,7 +72,7 @@
         display: grid;
         justify-content: center;
         align-content: center;
-         padding: 0% 0% 18% 15%;
+         padding: 0% 0% 0% 15%;
          box-sizing: border-box;
          grid-gap:5%;
     }
@@ -146,6 +146,111 @@
        width: 70%;
     }
 
+    .ebooks2 form
+    {
+        padding: 4% 0%;
+        background: #F9FCFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #0000004D;
+        border-radius: 10px;
+        opacity: 1;
+        max-width: 60%;
+        display: grid;
+        justify-content: center;
+        position: relative;
+        margin-top: -60%;
+        height: auto; grid-template-columns: repeat(1,1fr);  
+        align-items: center;
+    }
+
+    .ebooks2 form h2
+    {
+        text-align: center;
+        font: normal normal bold 2.7em Lato;
+        letter-spacing: 0px;
+        color: #EA5329;
+        opacity: 1;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0;
+    }
+
+    .ebooks2 form h3
+    {
+        text-align: center;
+        font: normal normal bold 1.3em Lato;
+        letter-spacing: 0px;
+        color: #EA5329;
+        opacity: 1;
+        padding: 0;
+        margin: 0;
+         text-transform: uppercase;
+    }
+    
+    .ebooks2 form p
+    {
+        text-align: center;
+        font: normal 1em Lato;
+        letter-spacing: 0px;
+        color: #13427A;
+        text-transform: uppercase;
+        opacity: 1;
+        padding: 5% 0%;
+        margin: 0;
+    }
+    .form-gp
+    {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(1,1fr);
+         font: normal 1em Lato;
+        align-items: center;
+        padding: 2% 9%;
+        box-sizing: border-box;
+    }
+
+    .input-gp 
+    {
+      
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #13427A;
+        border-radius: 5px;
+        opacity: 1;
+        height: 3rem;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 ;
+       font: normal 1.1em Lato;
+       outline-color: #13427A;
+       color: #1f2730;
+    }
+ 
+    .label-gp
+    {
+        font: normal 1.1em Lato;
+        margin-bottom: 2%;
+        color: #13427A;
+        text-align: left;
+    }
+
+    .form-av
+    {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        width: 100%;
+        text-align: left;
+        padding: 4% 5%;
+        box-sizing: border-box;
+        align-content: center;
+        grid-gap:0 ;
+    }
+
+    #aviso
+    {
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+    }
+
     </style>
 </head>
 <body id="ebooks">
@@ -175,13 +280,35 @@
                         <img src="./img/book.png" />
                     </div>
                 </article>
+
+
                 <article>
-                    <div class="tarjeta">
-                        <h2>En este e-book encontrarás:</h2>
-                        <ul>
-                            <ol>dd</ol>
-                        </ul>
-                    </div>
+                    <form>
+                                <h2>Descarga</h2>
+                                <h3>El Ebook gratuito</h3>
+                                <p>¡REGÍSTRATE Y SERÁ TUYO!</p>
+
+                                <div class="form-gp">
+                                    <label class="label-gp">Nombre completo</label>
+                                    <input type="text" id="nombre" class="input-gp" />
+                                </div>
+                                <div class="form-gp">
+                                    <label class="label-gp">Correo electrónico</label>
+                                    <input type="email" id="correo" class="input-gp" />
+                                </div>
+                                <div class="form-gp">
+                                    <label class="label-gp">Estado</label>
+                                    <input type="text" id="estado" class="input-gp" />
+                                </div>
+                                <div class="form-gp">
+                                    <label class="label-gp">Momento académico</label>
+                                    <input type="text" id="momento" class="input-gp" />
+                                </div>
+                                <div class="form-av">
+                                    <input type="checkbox" id="aviso" checked />
+                                    <label class="label-gp">Me gustaría más información</label>
+                                </div>
+                    </form>   
                 </article>
               
              
