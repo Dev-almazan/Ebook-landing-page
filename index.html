@@ -279,7 +279,7 @@
         justify-content: center;
         align-content: center;
         box-sizing: border-box;
-        padding: 1.2% 0%;
+        padding: 1.5%;
     }
 
     .ebooks3 h5
@@ -291,6 +291,11 @@
         margin: 0;
     }
 
+    .ebooks3 h5 a
+    {
+        color:#FFFFFF;
+        text-decoration: none;
+    }
     /*Laptos dimensiones*/
     @media screen and (max-width:1650px) {
 
@@ -788,9 +793,13 @@ background: linear-gradient(180deg, rgba(23,86,161,1) 0%, rgba(23,86,161,1) 48%,
             </section>
 
             <section class="ebooks3">
-                <h5>&copy; Copyright 2023. Todos los derechos reservado <a class="text-danger" target="_blank"
+                <h5>&copy; Copyright <span id="year"></span>. Todos los derechos reservados <a  target="_blank"
                         href="https://www.aliatuniversidades.com.mx/aliat"> Aliat
                         Universidades</a></h5>
             </section>
+
+    <script>
+            document.getElementById("year").innerText = new Date().getFullYear();;
+    </script>
 </body>
 </html>
