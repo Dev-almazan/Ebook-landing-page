@@ -46,7 +46,7 @@ body
     grid-gap: 7%;
     max-width: 60%;
     margin: 0 auto;
-    padding: 2% 0%;
+    padding: 2% 0% 7% 0%;
     font: normal normal bold  Lato;
 }
 .tarjeta
@@ -90,4 +90,26 @@ body
 font: bolder 1.3em Lato;
 border-radius: 10px;
     opacity: 1;
+}
+
+.tarjeta > .iconos  
+{
+    background: #000000a7 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    padding: 2% 0%;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+    bottom: 45%;
+    right: -32%;
+    display: grid;
+    align-content: center;
+    align-self: center;
+}
+
+.tarjeta>.iconos h5{
+   
+    color: #FFFFFF;
+font: normal 1.25em Lato;
 }
