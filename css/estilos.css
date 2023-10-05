@@ -1,0 +1,93 @@
+/*Ocultamos componentes generales*/
+#header,
+#footer,
+#boton-wps2,
+#boton-wps {
+    display: none !important;
+}
+
+/* componentes generales*/
+
+body
+{
+    background-color: #F9FCFF !important;
+    font: normal normal bold 3em Lato;
+}
+
+.buscador-icon
+{
+    color: rgb(25, 75, 113) !important;
+}
+.form-label
+{
+    font-size: 1.4em;
+    color: #13427A;
+}
+.sec-0
+{
+    padding: 2% 25%;
+    width: 100%;
+}
+#buscador
+{
+
+    height: 40px;
+    /* UI Properties */
+    border: 1px solid var(--unnamed-color-13427a);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #13427A;
+    border-radius: 22px;
+    opacity: 1;
+}
+.sec-1
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 7%;
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 2% 0%;
+    font: normal normal bold  Lato;
+}
+.tarjeta
+{
+    
+    padding: 1%;
+}
+
+.tarjeta > .bg
+{
+    height: 13rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+}
+
+.tarjeta > .title
+{
+    color: #13427A;
+    font: normal normal bold 1.3em Lato;
+    padding: 2% 0% 0% 0%;
+    text-align: left;
+}
+
+.tarjeta>.text {
+    color: #13427A;
+    font: lighter 1.2em Lato;
+    padding: 2% 0% 0% 0%;
+    text-align: left;
+}
+
+.tarjeta>.btn {
+ background-color: #13427A;
+ color: azure;
+ width: 100%;
+ font-size: 1.2em;
+ padding:3% 0%;
+ max-width: 100%;
+ border-radius: 10px;
+font: bolder 1.3em Lato;
+border-radius: 10px;
+    opacity: 1;
+}
