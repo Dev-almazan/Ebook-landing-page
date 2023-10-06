@@ -280,4 +280,8 @@ font: normal 1.25em Lato;
     color: #FFFFFF;
     font: normal .9em Lato;
 }
+#buscador {
+    padding: 2% 2%;
+    background: #FFFFFF;
+}
 }
