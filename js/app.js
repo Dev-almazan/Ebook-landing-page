@@ -59,15 +59,14 @@
                                 {
                                     secEbook.innerHTML += 
                                     `   
-                                        <div class="tarjeta" data-plan="${datos[a].values.titulo}" >
-                                        <div class="bg"
-                                                style="background-image: url('${datos[a].values.img.url}');">
+                                        <div class="tarjeta" data-plan="${datos[a].values.titulo} ${datos[a].values.carrera}" >
+                                        <div class="bg" style="background-image: url('${datos[a].values.img.url}');">
                                         </div>
                                         <div class="iconos">
                                                 <h5><i class="fas fa-book"></i> Ebook</h5>
                                         </div>
                                         <h5 class="title">${datos[a].values.titulo}</h5>
-                                        <p class="text">${datos[a].values.descargas}</p>
+                                        <p class="text">${datos[a].values.descargas} descargas</p>
                                         <a href="descargables/?ebook=${datos[a].id}" class="btn">Lo quiero</a>
                                 
                                     </div>
@@ -91,9 +90,16 @@
 
             }
 
-        /*Eventos del Dom  */
+       
 
-        getData(url,"?hdb=ebooks");
+        
+        
+        /*  Funcion general para traer data parametro marca = a dominio  */
+
+        getData(url, "?hdb=ebooks&marca=" + marcaDefault); 
+
+
+        /*Eventos del Dom  */
 
         document.getElementById("buscador").addEventListener("keyup", function () {
 
@@ -101,13 +107,14 @@
 
             document.querySelectorAll('.tarjeta').forEach(function(div){
 
-                if (div.getAttribute("data-plan") == stringBuscador )
+                if (div.getAttribute("data-plan").toUpperCase().indexOf(stringBuscador.toUpperCase()) < 0)
                 {
-                    div.style.display= "";
+                    div.style.display= "none";
                 }
+
                 else
                 {
-                    div.style.display = "none";
+                    div.style.display = ""; 
                 }
 
             });
