@@ -1,23 +1,25 @@
 
         let marcaDefault ;
+        let img;
         const url = 'https://aliatuniversidades.com.mx/ONALIAT/API/hubspot/';
-
+        document.getElementById("year").innerText = new Date().getFullYear();
+        
 
         /*Funciones generales */
             switch (document.domain) 
             {
                         case 'www.etac.edu.mx':
                             marcaDefault = "ETAC";
-                            
-                            break;
+                            img = "https://www.etac.edu.mx/hubfs/logo_ETAC_nuevo.svg";
+                        break;
                         case 'www.utan.edu.mx':
                             marcaDefault = "UTAN";
-                            
-                            break;
+                            img = "";
+                        break;
                         case 'www.unea.edu.mx':
                             marcaDefault = "UNEA";
-                        
-                            break;
+                            img = "https://www.unea.edu.mx/hs-fs/hubfs/logo-unea-2.png?height=60&name=logo-unea-2.png";
+                        break;
                         case 'www.uvg.edu.mx':
                             marcaDefault = "UVG";
                             
@@ -31,10 +33,13 @@
                             
                         break;
                         default:
-                            marcaDefault = "ETAC"
+                                marcaDefault = "ETAC";
+                                img = "https://www.etac.edu.mx/hubfs/logo_ETAC_nuevo.svg";
                         break;
 
             }
+
+            document.getElementById("imgNav").src = img;
 
             const getData =(url, parametros)=> {
 
@@ -107,15 +112,35 @@
 
             document.querySelectorAll('.tarjeta').forEach(function(div){
 
-                if (div.getAttribute("data-plan").toUpperCase().indexOf(stringBuscador.toUpperCase()) < 0)
-                {
-                    div.style.display= "none";
-                }
+                let busqueda = div.getAttribute("data-plan").toUpperCase().indexOf(stringBuscador.toUpperCase())
 
+                let secEbook = document.getElementById('secEbooks')
+
+                let alerta = document.getElementById('alerta')
+
+                console.log(busqueda)
+
+                if (busqueda == -1)
+                {
+                    alerta.style.display = "block";
+                    secEbook.style.display = "none";
+                }
                 else
                 {
-                    div.style.display = ""; 
+                    alerta.style.display = "none";
+                    secEbook.style.display = "grid";
+
+                        if (busqueda < 0) {
+                            div.style.display = "none";
+                        }
+                        else {
+                            div.style.display = "";
+                           
+                        }
+
+
                 }
+               
 
             });
 
