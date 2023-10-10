@@ -5,18 +5,52 @@
 #boton-wps {
     display: none !important;
 }
+#cargando {
+    background:rgba(229, 232, 234, 0.992) !important;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+
+}
+
+#cargando img {
+    position: fixed;
+    width: 70px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.rotate {
+    animation: rotation 1.4s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
 
 #alerta
 {
-    display: none;
     width: 100%;
-    padding: 12% 0%;
+    padding: 8% 0% 15% 0%;
     text-align: center;
+    display: none;
+    transition: all .9s;
+    color: rgb(25, 75, 113) !important;
 }
 
 /* componentes generales*/
 .tarjeta {
-
+    transition: all 2s;
     padding: 2%;
 }
 body
@@ -76,7 +110,7 @@ body
     z-index: 1;
     margin:  0 auto ;
     justify-content: center;
-    width: 100%;
+    width:70%;
     
 }
 
@@ -392,12 +426,21 @@ font: normal 1.25em Lato;
 }
 
 #navBar img {
-    padding: 1%;
+    padding: 1.6%;
     height: auto;
     z-index: 1;
     margin: 0 auto;
     justify-content: center;
-    width:70%;
+    width:50%;
 
+}
+#alerta {
+    width: 100%;
+    padding: 40% 2% 40% 2%;
+    text-align: center;
+    display: none;
+    transition: all .9s;
+    color: rgb(48, 131, 194) !important;
+    font: normal 1.2em Lato;
 }
 }

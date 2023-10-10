@@ -4,37 +4,45 @@
         const url = 'https://aliatuniversidades.com.mx/ONALIAT/API/hubspot/';
         document.getElementById("year").innerText = new Date().getFullYear();
         
+            setTimeout(() => {
+                document.getElementById("cargando").style.display = "none";
+            }, 2000);
+
+        
+
+
+
 
         /*Funciones generales */
             switch (document.domain) 
             {
                         case 'www.etac.edu.mx':
                             marcaDefault = "ETAC";
-                            img = "https://www.etac.edu.mx/hubfs/logo_ETAC_nuevo.svg";
+                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_etac.svg";
                         break;
                         case 'www.utan.edu.mx':
                             marcaDefault = "UTAN";
-                            img = "";
+                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_utan.svg";
                         break;
                         case 'www.unea.edu.mx':
                             marcaDefault = "UNEA";
-                            img = "https://www.unea.edu.mx/hs-fs/hubfs/logo-unea-2.png?height=60&name=logo-unea-2.png";
+                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_unea.svg";
                         break;
                         case 'www.uvg.edu.mx':
                             marcaDefault = "UVG";
-                            
-                            break;
+                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_uvg.svg";
+                        break;
                         case 'www.soycest.mx':
                             marcaDefault = "CEST";
-                            
-                            break;
+                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_cest.svg";
+                        break;
                         case 'www.universidadlaconcordia.edu.mx':
                             marcaDefault = "LA CONCORDIA"
-                            
+                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_ulc.svg";
                         break;
                         default:
-                                marcaDefault = "ETAC";
-                                img = "https://www.etac.edu.mx/hubfs/logo_ETAC_nuevo.svg";
+                            marcaDefault = "ETAC";
+                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_etac.svg";
                         break;
 
             }
@@ -108,43 +116,38 @@
 
         document.getElementById("buscador").addEventListener("keyup", function () {
 
-            const stringBuscador = this.value;
+            const alerta = document.getElementById("alerta");
 
-            document.querySelectorAll('.tarjeta').forEach(function(div){
+            let stringBuscador = this.value;
 
-                let busqueda = div.getAttribute("data-plan").toUpperCase().indexOf(stringBuscador.toUpperCase())
-
-                let secEbook = document.getElementById('secEbooks')
-
-                let alerta = document.getElementById('alerta')
-
-                console.log(busqueda)
-
-                if (busqueda == -1)
-                {
-                    alerta.style.display = "block";
-                    secEbook.style.display = "none";
-                }
-                else
-                {
-                    alerta.style.display = "none";
-                    secEbook.style.display = "grid";
+            let arrayBusquedas = [];  
+            
+                    document.querySelectorAll('.tarjeta').forEach(function (div) {
+                       
+                        let busqueda = div.getAttribute("data-plan").toUpperCase().indexOf(stringBuscador.toUpperCase())
+                        arrayBusquedas.push(busqueda)
 
                         if (busqueda < 0) {
                             div.style.display = "none";
                         }
                         else {
                             div.style.display = "";
-                           
                         }
+                    });
 
+            const found = arrayBusquedas.find((element) => element >= 0);
 
-                }
-               
+            if (found == undefined) 
+            {
+                alerta.style.display = "block";
+            }
+            else
+            {
+                alerta.style.display = "none";
+            }
 
-            });
-
-
-
+            arrayBusquedas = [];    
+            
+         
 
         });
