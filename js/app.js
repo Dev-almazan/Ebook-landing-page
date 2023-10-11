@@ -6,7 +6,7 @@
         
             setTimeout(() => {
                 document.getElementById("cargando").style.display = "none";
-            }, 2000);
+            }, 1500);
 
         
 

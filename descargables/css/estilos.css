@@ -12,27 +12,104 @@ body,.ebooks {
     padding: 0;
     margin: 0;
 }
+#cargando {
+    background: rgba(229, 232, 234, 0.992) !important;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
 
-#ebooks>header {
+}
+
+#cargando img {
+    position: fixed;
+    width: 70px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.rotate {
+    animation: rotation 1.4s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+/* Barra navegacion */
+#navBar {
 
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
     width: 100%;
-    max-width: 100%;
     height: auto;
-    z-index: 10;
+    margin: 0 auto;
     box-sizing: border-box;
-    padding-left: 15%;
+
     background-color: #ffffff;
+    border-bottom: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, #0070b9 16.6%, #ef4438 16.6% 33.3%, #5091cd 33.3% 49.6%, #ea5329 49.6% 66.2%, #52b9e9 66.2% 82.8%, #f99b1c 82.8%);
 }
 
-#ebooks header img {
-    padding: .5% 0%;
-    width: 25%;
+#navBar a {
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    display: grid;
+    padding: .7% 0%;
+}
+
+#navBar a img {
+
     height: auto;
     z-index: 1;
-    box-sizing: border-box;
+    margin: 0 auto;
+    justify-content: center;
+    width: 70%;
+
 }
 
+
+/* Footer */
+
+.ebooks3 {
+    width: 100%;
+    background-color: #13427A;
+    backface-visibility: hidden !important;
+    grid-template-columns: repeat(1, 1fr);
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    box-sizing: border-box;
+    padding: 1.5%;
+    border-top: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, #0070b9 16.6%, #ef4438 16.6% 33.3%, #5091cd 33.3% 49.6%, #ea5329 49.6% 66.2%, #52b9e9 66.2% 82.8%, #f99b1c 82.8%);
+}
+
+.ebooks3 h5 {
+    color: #FFFFFF;
+    font: normal 1.1em Lato;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.ebooks3 h5 a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+
+/*Componenetes generales*/
 .ebooks1 {
     width: 100%;
     padding: 2% 0% 8% 15%;
@@ -280,19 +357,7 @@ body,.ebooks {
 /*Laptos dimensiones*/
 @media screen and (max-width:1650px) {
 
-    #ebooks>header {
-
-        padding-left: 8%;
-    }
-
-    #ebooks header img {
-        padding: .4% 0%;
-        width: 29%;
-        height: auto;
-        z-index: 1;
-        box-sizing: border-box;
-    }
-
+    
     .ebooks1 {
         padding: 2% 0% 8% 7%;
     }
@@ -406,18 +471,6 @@ body,.ebooks {
 /*Tablets dimensiones*/
 @media screen and (max-width:1250px) {
 
-    #ebooks>header {
-
-        padding-left: 3%;
-    }
-
-    #ebooks header img {
-        padding: .4% 0%;
-        width: 35%;
-        height: auto;
-        z-index: 1;
-        box-sizing: border-box;
-    }
 
     .ebooks1 {
         padding: 2% 0% 9% 3%;
@@ -530,28 +583,7 @@ body,.ebooks {
 
 /*Celulares dimensiones*/
 @media screen and (max-width:750px) {
-    #ebooks>header {
-        display: flex;
-        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        z-index: 10;
-        box-sizing: border-box;
-        padding-left: 0%;
-        background-color: #ffffff;
-        justify-content: center;
-    }
-
-    #ebooks header img {
-        padding: 1.5%;
-        width: 70%;
-        height: auto;
-        z-index: 1;
-        box-sizing: border-box;
-        margin: 0 auto;
-    }
-
+ 
     .ebooks1 {
         width: 100%;
         padding: 4% 2% 5% 2%;
@@ -662,18 +694,27 @@ body,.ebooks {
         align-items: center;
     }
 
+    
+#navBar img {
+    padding: 1.6%;
+    height: auto;
+    z-index: 1;
+    margin: 0 auto;
+    justify-content: center;
+    width: 50%;
 
-    .ebooks3 {
-        width: 100%;
-        background-color: #13427A;
-        backface-visibility: hidden !important;
-        grid-template-columns: repeat(1, 1fr);
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        box-sizing: border-box;
-        padding: 3% 3%;
-    }
+}
+.ebooks3 {
+    width: 100%;
+    background-color: #13427A;
+    backface-visibility: hidden !important;
+    grid-template-columns: repeat(1, 1fr);
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    box-sizing: border-box;
+    padding: 3% 3%;
+}
 
 .ebooks3 h5 {
     color: #FFFFFF;
@@ -682,4 +723,5 @@ body,.ebooks {
     padding: 0;
     margin: 0;
 }
+  
 }
