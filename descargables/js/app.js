@@ -222,6 +222,77 @@
 
         }
 
+        const getCarrrera = (url, datos) => {
+
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(datos),
+
+                headers: {
+                    'content-type': 'application/json'
+                }
+            }).then((respuesta) => {
+
+                // Convertimos data del api de formato json a array 
+
+                if (respuesta.status == 200) {
+
+                    respuesta.json().then((data) => {
+
+                        let selectMod = document.getElementById("carreras");
+                        const carreras = [];
+
+                        selectMod.options.length = 1;
+
+                        const dataGet = Object.values(data);
+                        const resultData = dataGet.filter(dataGet => dataGet.nivel == document.getElementById("ebookNivel").value );
+
+                        /* 1- guardamos valores de carreras por marca */
+
+                        for (let i = 0; i < resultData.length; i++) {
+
+                            carreras.push(resultData[i].carrera);
+                        }
+
+                        /* 2- quitamos carreras duplicadas */
+
+                        function onlyUnique(value, index, self) {
+                            return self.indexOf(value) === index;
+                        }
+
+                        let carrerasUnicas = carreras.filter(onlyUnique);
+
+                        /*3- Agregamos options de acuerdo a la data */
+            
+                            mostrarSelect("secCarreras","secModalidad");
+
+                            for (let a = 0; a < carrerasUnicas.length; a++) {
+
+                                let option = document.createElement("option");
+                                option.value = carrerasUnicas[a];
+                                option.text = carrerasUnicas[a];
+                                selectMod.appendChild(option);
+
+                            }
+
+                    });
+
+                }
+                else {
+
+                    console.log(respuesta.json())
+                }
+
+
+            })
+                .catch((error) => {
+
+                    console.log(error);
+
+                });
+
+        }
+
 
         /*  Manejo del Dom eventos y llamado de funciones */
 
@@ -251,11 +322,16 @@
                 break;
                 case "opcion3":
                     //Me interesa otra carrera
-                    
+                    getCarrrera(urlApi, {
+                        'key': 'ALIAT-162098695936825',
+                        'medio': 'catalogo',
+                        'opcion': 'plan-onaliat',
+                        'marca': marcaDefault
+                    });
 
                 break;
                 case "opcion4":
-                    
+
                     //ya estoy estudiando otra carrera
                     ocultarSelect("secCarreras", "secModalidad");
                     asgnacionPlan("opcional","opcional", "opcional", "opcional");    
@@ -284,4 +360,10 @@
                     const SepararPlan = this.value.split(" en ");     
                     asgnacionPlan(document.getElementById("ebookNivel").value, document.getElementById("ebookCarrer").value, SepararPlan[1], SepararPlan[0] );
                 }
+        });
+
+        document.getElementById("carreras").addEventListener('change', function () {
+
+            asgnacionPlan(document.getElementById("ebookNivel").value, this.value, "opcional", "opcional");  
+          
         });
