@@ -21,10 +21,12 @@
             document.getElementById(ocultar2).style.display = "none";
         }
 
-        const asgnacionCarrera = (nivel,carrera)=>
+        const asgnacionPlan = (nivel, carrera, campus,modalidad)=>
         {
             document.getElementById("categoria").value = nivel;
             document.getElementById("carrera").value = carrera;
+            document.getElementById("campus").value = campus;
+            document.getElementById("modalidad").value = modalidad;
         }
 
         
@@ -60,7 +62,7 @@
             default:
                 marcaDefault = "ETAC";
                 img = "https://www.aliatuniversidades.com.mx/hubfs/l_etac.svg";
-                break;
+            break;
 
         }
 
@@ -89,10 +91,13 @@
                                 let imgc = document.getElementById("imgEbook");
                                 let subtemas = datos[0].values.subtemas;
 
-                                document.getElementById("titulo").innerText = datos[0].values.titulo;
-                                document.getElementById("lbEbook").innerText = datos[0].values.carrera;
-                                document.getElementById("ebookType").value = datos[0].values.carrera;
+                                document.getElementById("titulo").innerText = datos[0].values.titulo.trim();
+                                document.getElementById("lbEbook").innerText = datos[0].values.carrera.trim();
+                                document.getElementById("ebookCarrer").value = datos[0].values.carrera;
+                                document.getElementById("ebookNivel").value = datos[0].values.nivel_de_interes.name;
                                 document.getElementById("descripcion").innerText = datos[0].values.descripcion;
+
+                               
 
                                 imgc.src = datos[0].values.img.url;
                                 imgc.alt = datos[0].values.carrera;
@@ -134,6 +139,89 @@
 
         }
 
+        const getModalidad =(url, datos)=> {
+
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(datos),
+
+                headers: {
+                    'content-type': 'application/json'
+                }
+            }).then((respuesta) => {
+
+                // Convertimos data del api de formato json a array 
+
+                if (respuesta.status == 200) {
+
+                    respuesta.json().then((data) => {
+
+                        let selectMod = document.getElementById("modalidades");
+                        const niveles = [];
+                        selectMod.options.length = 1;
+
+                        const dataGet = Object.values(data);
+                        const resultData = dataGet.filter(dataGet => dataGet.nivel == document.getElementById("ebookNivel").value && dataGet.carrera == document.getElementById("ebookCarrer").value);
+
+                        /* 1- guardamos valores de modalidad y campus */
+
+                        for (let i = 0; i < resultData.length; i++) {
+
+                            niveles.push(resultData[i].modalidad == "On Aliat" ? "En Línea" : resultData[i].modalidad + " en " + resultData[i].campus_valor);
+                        }
+
+                        /* 2- quitamos duplicados modalidad y campus */
+
+                        function onlyUnique(value, index, self) {
+                            return self.indexOf(value) === index;
+                        }
+
+                        let nivelesUnicos = niveles.filter(onlyUnique);
+
+                        /*3- Agregamos options de acuerdo a la data */
+
+                        if(nivelesUnicos.length <= 0)
+                        {
+                            
+                                ocultarSelect("secModalidad", "secCarreras");
+                                asgnacionPlan(document.getElementById("ebookNivel").value, document.getElementById("ebookCarrer").value, "opcional", "opcional");
+                        }
+                        else
+                        {
+                            
+                                mostrarSelect("secModalidad", "secCarreras");
+                                
+                                for (let a = 0; a < nivelesUnicos.length; a++) {
+
+                                    let option = document.createElement("option");
+                                    option.value = nivelesUnicos[a];
+                                    option.text = nivelesUnicos[a];
+                                    selectMod.appendChild(option);
+
+                                }
+                        }
+                    
+
+
+
+                    });
+
+                }
+                else {
+
+                    console.log(respuesta.json())
+                }
+
+
+            })
+                .catch((error) => {
+
+                    console.log(error);
+
+                });
+
+        }
+
 
         /*  Manejo del Dom eventos y llamado de funciones */
 
@@ -144,33 +232,56 @@
             
             switch (this.value) {
                 case "opcion1":
-                    // Si, es mi primera opción
-                    mostrarSelect("secModalidad","secCarreras");
-                    asgnacionCarrera(document.getElementById("ebookType").value, "");
                     
+                    // Cosumimos data en el option modalidad
+                    getModalidad(urlApi, {
+                        'key': 'ALIAT-162098695936825',
+                        'medio': 'catalogo',
+                        'opcion': 'plan-onaliat',
+                        'marca': marcaDefault
+                    });
+
                 break;
                 case "opcion2":
                     //Apenas voy cursando el bachillerato
+
                     ocultarSelect("secCarreras", "secModalidad");   
-                    asgnacionCarrera("Bachillerato", "Bachillerato");
-                  
+                    asgnacionPlan("Bachillerato", "opcional", "opcional","opcional");
+
                 break;
                 case "opcion3":
                     //Me interesa otra carrera
-                    mostrarSelect("secCarreras", "secModalidad");
-                    asgnacionCarrera("Licenciatura",""); 
+                    
+
                 break;
                 case "opcion4":
-                    //Me interesa otra carrera
+                    
+                    //ya estoy estudiando otra carrera
                     ocultarSelect("secCarreras", "secModalidad");
-                    asgnacionCarrera("", "");    
+                    asgnacionPlan("opcional","opcional", "opcional", "opcional");    
+
                 break;
                 default:
-                    //Otras opciones bachillerato y otra carrera
+
                     ocultarSelect("secCarreras", "secModalidad");
-                    asgnacionCarrera("", "");    
+                    asgnacionPlan("","","", "");    
+
                 break;
                 
             }
 
         })
+
+        document.getElementById("modalidades").addEventListener('change', function () {
+            
+                if(this.value == "En Línea")
+                {
+                    asgnacionPlan(document.getElementById("ebookNivel").value, document.getElementById("ebookCarrer").value, "CES " + marcaDefault,"On Aliat" );
+                }
+                else
+                {
+
+                    const SepararPlan = this.value.split(" en ");     
+                    asgnacionPlan(document.getElementById("ebookNivel").value, document.getElementById("ebookCarrer").value, SepararPlan[1], SepararPlan[0] );
+                }
+        });
