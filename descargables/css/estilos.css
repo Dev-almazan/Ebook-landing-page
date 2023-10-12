@@ -8,6 +8,11 @@
 
 /* componentes generales*/
 
+#secModalidad, #secCarreras
+{
+    display: none;
+}
+
 body,.ebooks {
     padding: 0;
     margin: 0;
@@ -262,7 +267,7 @@ body,.ebooks {
     color: #13427A;
     text-transform: uppercase;
     opacity: 1;
-    padding: 5% 0%;
+    padding: 2% 0%;
     margin: 0;
 }
 
@@ -452,7 +457,7 @@ body,.ebooks {
     }
 
     #submitForm {
-        padding: 3% 0%;
+        padding: 2% 0%;
         text-align: center;
         background: #EA5329 0% 0% no-repeat padding-box;
         border-radius: 5px;

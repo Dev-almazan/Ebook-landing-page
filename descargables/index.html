@@ -46,6 +46,13 @@
                         <h2>Descarga</h2>
                         <h3>El Ebook gratuito</h3>
                         <p>¡REGÍSTRATE Y SERÁ TUYO!</p>
+                        
+
+                        <!--  inputs requeridos Form-->
+
+                        <input type="hidden" id="carrera" disabled >
+                        <input type="hidden" id="categoria" disabled>
+                        <input type="hidden" id="modalidad" disabled>
 
                         <div class="form-gp">
                             <label class="label-gp">Nombre completo</label>
@@ -56,16 +63,38 @@
                             <input type="email" id="correo" class="input-gp" />
                         </div>
                         <div class="form-gp">
-                            <label class="label-gp">Estado</label>
-                            <input type="text" id="estado" class="input-gp" />
+                            <label class="label-gp">Número telefónico</label>
+                            <input type="text" id="telefono" class="input-gp" />
                         </div>
                         <div class="form-gp">
-                            <label class="label-gp">Momento académico</label>
-                            <input type="text" id="momento" class="input-gp" />
+                            <label class="label-gp">¿Te interesa estudiar <span id="lbEbook"></span>?</label>
+                            <select id="mAcademico" class="input-gp">
+                                <option value="">Selecciona una opción</option>
+                                <option value="opcion1">Si, es mi primera opción</option>
+                                <option value="opcion2">Apenas voy cursando el bachillerato</option>
+                                <option value="opcion3">Me interesa otra carrera</option>
+                                <option value="opcion4">Ya estoy estudiando otra carrera</option>
+                            </select>
                         </div>
-                        <div class="form-av">
-                            <input type="checkbox" id="aviso" checked />
-                            <label class="label-gp">Me gustaría más información</label>
+
+                        <!--  inputs opcionales Form  -->
+
+                        <input type="hidden" id="ebookType" disabled>
+
+                        <div class="form-gp" id="secModalidad">
+                            <label class="label-gp">¿Qué modalidad te gustaría?</label>
+                            <select id="modalidades" class="input-gp">
+                                <option value="">Seleccione una opción</option>
+                            </select>
+                        </div>
+                        <div class="form-gp" id="secCarreras">
+                            <label class="label-gp">¿Qué carrera te gustaría?</label>
+                            <select id="carreras" class="input-gp">
+                                <option value="">Seleccione una opción</option>
+                            </select>
+                        </div>
+                        <div class="form-gp">
+                            <label class="label-gp"><input type="checkbox" id="aviso" checked /> Estoy de acuerdo con el aviso de privacidad y los términos y condiciones</label>
                         </div>
                         <div class="form-gp">
                             <button type="submit" id="submitForm">¡RECIBIR MI MATERIAL!</button>

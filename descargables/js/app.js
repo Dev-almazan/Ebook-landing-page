@@ -10,6 +10,24 @@
 
         /*Funciones generales */
 
+        const mostrarSelect = (mostrar,ocultar)=>
+        {
+            document.getElementById(mostrar).style.display = "block";
+            document.getElementById(ocultar).style.display = "none";
+        }
+
+        const ocultarSelect = (ocultar1, ocultar2) => {
+            document.getElementById(ocultar1).style.display = "none";
+            document.getElementById(ocultar2).style.display = "none";
+        }
+
+        const asgnacionCarrera = (nivel,carrera)=>
+        {
+            document.getElementById("categoria").value = nivel;
+            document.getElementById("carrera").value = carrera;
+        }
+
+        
         setTimeout(() => {
             document.getElementById("cargando").style.display = "none";
         }, 1000);
@@ -72,6 +90,8 @@
                                 let subtemas = datos[0].values.subtemas;
 
                                 document.getElementById("titulo").innerText = datos[0].values.titulo;
+                                document.getElementById("lbEbook").innerText = datos[0].values.carrera;
+                                document.getElementById("ebookType").value = datos[0].values.carrera;
                                 document.getElementById("descripcion").innerText = datos[0].values.descripcion;
 
                                 imgc.src = datos[0].values.img.url;
@@ -119,3 +139,38 @@
 
 
         getData(urlApi,"?hdb=ebooks&item=" + getValor); 
+
+        document.getElementById("mAcademico").addEventListener('change',function(){
+            
+            switch (this.value) {
+                case "opcion1":
+                    // Si, es mi primera opción
+                    mostrarSelect("secModalidad","secCarreras");
+                    asgnacionCarrera(document.getElementById("ebookType").value, "");
+                    
+                break;
+                case "opcion2":
+                    //Apenas voy cursando el bachillerato
+                    ocultarSelect("secCarreras", "secModalidad");   
+                    asgnacionCarrera("Bachillerato", "Bachillerato");
+                  
+                break;
+                case "opcion3":
+                    //Me interesa otra carrera
+                    mostrarSelect("secCarreras", "secModalidad");
+                    asgnacionCarrera("Licenciatura",""); 
+                break;
+                case "opcion4":
+                    //Me interesa otra carrera
+                    ocultarSelect("secCarreras", "secModalidad");
+                    asgnacionCarrera("", "");    
+                break;
+                default:
+                    //Otras opciones bachillerato y otra carrera
+                    ocultarSelect("secCarreras", "secModalidad");
+                    asgnacionCarrera("", "");    
+                break;
+                
+            }
+
+        })
