@@ -5,12 +5,85 @@
         const urlApi = 'https://aliatuniversidades.com.mx/ONALIAT/API/hubspot/';
         const parametrosGet = window.location.search;
         const getValor = new URLSearchParams(parametrosGet).get('ebook');
+        if (getValor == undefined) { window.location.href = '../'; }
         document.getElementById("year").innerText = new Date().getFullYear();
         let secCarreras = document.getElementById("secCarreras")
         let secModalidad = document.getElementById("secModalidad")
 
 
         /*Funciones generales */
+
+        const alertas = (valor, posicion) => {
+            /* Mostramos span con la alerta de la validacion de acuerdo al input */
+
+            const error = document.getElementsByClassName('error');
+
+            for (b = 0; b < error.length; b++) {
+
+                if (error[b] == error[posicion]) {
+                    error[posicion].innerHTML = valor;
+                }
+                else {
+                    error[b].innerHTML = "";
+                }
+
+            }
+
+        }
+
+
+        function resaltar(valor) {
+            var element = document.getElementById(valor);
+            element.classList.add("resaltes");
+            element.classList.add("efectos");
+
+        }
+
+        function removerResaltes() {
+
+            document.querySelectorAll('.input-gp').forEach(function (div) {
+
+                let element = document.getElementById(div.id);
+                if (element.classList.contains("resaltes")) 
+                {
+                    element.classList.remove("resaltes")
+                }
+            });
+
+        }
+
+        const submitForm = (url,datos) => {
+
+                    fetch(url, {
+                        method: 'POST',
+                        body: JSON.stringify(datos),
+                        headers: {
+                            'content-type': 'application/json'
+                        }
+                    }).then((respuesta) => {
+
+                        if (respuesta.status == 200) {
+
+                            window.location.href = document.getElementById("url").value;
+                        }
+                        else {
+                            console.log(respuesta.ok);
+                            console.log(respuesta.status);
+                            respuesta.json().then((data) => {
+
+                                alert(data);
+                            });
+                        }
+
+                    })
+                        .catch((error) => {
+
+                            console.log(error);
+
+                        });
+
+
+        }
 
         const mostrarSelect = (mostrar,ocultar)=>
         {
@@ -34,7 +107,7 @@
         
         setTimeout(() => {
             document.getElementById("cargando").style.display = "none";
-        }, 1000);
+        }, 700);
 
         switch (document.domain) {
             case 'www.etac.edu.mx':
@@ -98,7 +171,7 @@
                                 document.getElementById("ebookCarrer").value = datos[0].values.carrera;
                                 document.getElementById("ebookNivel").value = datos[0].values.nivel_de_interes.name;
                                 document.getElementById("descripcion").innerText = datos[0].values.descripcion;
-
+                                document.getElementById("url").value = datos[0].values.pdf;
                                
 
                                 imgc.src = datos[0].values.img.url;
@@ -143,6 +216,9 @@
 
         const getModalidad =(url, datos)=> {
 
+            let selectMod = document.getElementById("modalidades");
+            selectMod.options.length = 1;
+
             fetch(url, {
                 method: 'POST',
                 body: JSON.stringify(datos),
@@ -158,9 +234,9 @@
 
                     respuesta.json().then((data) => {
 
-                        let selectMod = document.getElementById("modalidades");
+                        
                         const niveles = [];
-                        selectMod.options.length = 1;
+                        
 
                         const dataGet = Object.values(data);
 
@@ -311,6 +387,8 @@
             switch (this.value) {
                 case "opcion1":
 
+                    asgnacionPlan("opcional", "opcional", "", "");
+
                     document.getElementById("carreras").value = document.getElementById("ebookCarrer").value;
                     mostrarSelect("secModalidad","secCarreras")
                    
@@ -333,6 +411,8 @@
                 case "opcion3":
                     //Me interesa otra carrera
 
+                    asgnacionPlan("opcional", "", "", "");
+
                     mostrarSelect("secCarreras", "secModalidad")
                     getCarrrera(urlApi, {
                         'key': 'ALIAT-162098695936825',
@@ -340,6 +420,8 @@
                         'opcion': 'plan-onaliat',
                         'marca': marcaDefault
                     });
+
+                    
 
                 break;
                 case "opcion4":
@@ -379,6 +461,9 @@
 
         document.getElementById("carreras").addEventListener('change', function () {
 
+            document.getElementById("carrera").value = document.getElementById("carreras").value
+
+            document.getElementById("modalidad").value="";
 
             secModalidad.style.display = "block"
 
@@ -387,8 +472,77 @@
                 'medio': 'catalogo',
                 'opcion': 'plan-onaliat',
                 'marca': marcaDefault
-            });
+            },document.getElementById('pdf'));
 
             
           
+        });
+
+        document.getElementById("FormSubmit").addEventListener('submit', function (e) {
+
+
+                e.preventDefault();
+                removerResaltes();
+
+
+                    let nombre = document.getElementById('nombre').value;
+                    let correo = document.getElementById('correo').value;
+                    let telefono = document.getElementById('telefono').value;
+                    let momentoAc = document.getElementById('mAcademico').value;
+                    let carreras = document.getElementById('carrera').value;
+                    let modalidades = document.getElementById('modalidad').value;
+
+
+                    let excorreo = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z]{2,6})+$/;
+                    let numeros = /^([0-9 ])+$/;
+                    let letras = /^([á-ú-Á-Ú-a-z-A-Z-ñ ._])+$/;
+
+
+                    if (nombre.length > 55 || letras.test(nombre) === false || nombre.length == 0) {
+                        
+                        resaltar("nombre")
+                        alertas("Por favor ingresa tú nombre completo", 0);
+                    }
+                    else if (correo.length > 55 || excorreo.test(correo) === false || correo.length == 0) {
+
+                        resaltar("correo")
+                        alertas("Por favor ingresa tú correo electrónico", 1);
+                    }
+                    else if (telefono.length != 10 || numeros.test(telefono) === false || telefono.length == 0) {
+
+                        resaltar("telefono")
+                        alertas("Por favor ingresa número de teléfono - 10 digítos.", 2);
+                       
+                    }
+                    else if (momentoAc.length == 0 || letras.test(momentoAc.value) === false) {
+                        alertas("", 0);
+                        resaltar("mAcademico");
+                    }
+                    else if (carreras.length == 0 || letras.test(carreras.value) === false) {
+
+                        resaltar("carreras");
+                    }
+                    else if (modalidades.length == 0 || letras.test(modalidades.value) === false) {
+                        
+                        resaltar("modalidades");
+                    }
+                    else 
+                    {
+                        alertas("", 0);
+                        submitForm(urlApi, {
+                            key: 'ALIAT-162098695936825',
+                            marca: marcaDefault,
+                            medio: 'organico-ebook',
+                            nombre: nombre,
+                            correo: correo,
+                            telefono: telefono,
+                            momento: momentoAc,
+                            categoria: document.getElementById('categoria').value,
+                            carrera: document.getElementById('carrera').value,
+                            campus: document.getElementById('campus').value,
+                            modalidad: document.getElementById('modalidad').value
+                        });
+                    }
+
+
         });

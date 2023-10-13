@@ -8,6 +8,18 @@
 
 /* componentes generales*/
 
+.resaltes {
+    color: #212529;
+    background-color: #fff;
+    border: 2px solid #ec2f2f !important;
+    box-shadow: 0 1rem 3rem rgba(89, 83, 83, 0.175) !important;
+}
+.error
+{
+    color: #ec2f2f ;
+}
+
+
 #secModalidad, #secCarreras
 {
     display: none;
