@@ -6,6 +6,8 @@
         const parametrosGet = window.location.search;
         const getValor = new URLSearchParams(parametrosGet).get('ebook');
         document.getElementById("year").innerText = new Date().getFullYear();
+        let secCarreras = document.getElementById("secCarreras")
+        let secModalidad = document.getElementById("secModalidad")
 
 
         /*Funciones generales */
@@ -161,8 +163,12 @@
                         selectMod.options.length = 1;
 
                         const dataGet = Object.values(data);
-                        const resultData = dataGet.filter(dataGet => dataGet.nivel == document.getElementById("ebookNivel").value && dataGet.carrera == document.getElementById("ebookCarrer").value);
 
+                        let carreDEf = document.getElementById("carreras").value == "" ? document.getElementById("ebookCarrer").value : document.getElementById("carreras").value;
+
+                        const resultData = dataGet.filter(dataGet => dataGet.nivel == document.getElementById("ebookNivel").value && dataGet.carrera == carreDEf);
+
+                        console.log(resultData)
                         /* 1- guardamos valores de modalidad y campus */
 
                         for (let i = 0; i < resultData.length; i++) {
@@ -188,8 +194,6 @@
                         }
                         else
                         {
-                            
-                                mostrarSelect("secModalidad", "secCarreras");
                                 
                                 for (let a = 0; a < nivelesUnicos.length; a++) {
 
@@ -239,6 +243,8 @@
 
                     respuesta.json().then((data) => {
 
+                        document.getElementById("carreras").value = "";
+
                         let selectMod = document.getElementById("carreras");
                         const carreras = [];
 
@@ -264,7 +270,6 @@
 
                         /*3- Agregamos options de acuerdo a la data */
             
-                            mostrarSelect("secCarreras","secModalidad");
 
                             for (let a = 0; a < carrerasUnicas.length; a++) {
 
@@ -300,10 +305,15 @@
         getData(urlApi,"?hdb=ebooks&item=" + getValor); 
 
         document.getElementById("mAcademico").addEventListener('change',function(){
+
+
             
             switch (this.value) {
                 case "opcion1":
-                    
+
+                    document.getElementById("carreras").value = document.getElementById("ebookCarrer").value;
+                    mostrarSelect("secModalidad","secCarreras")
+                   
                     // Cosumimos data en el option modalidad
                     getModalidad(urlApi, {
                         'key': 'ALIAT-162098695936825',
@@ -322,6 +332,8 @@
                 break;
                 case "opcion3":
                     //Me interesa otra carrera
+
+                    mostrarSelect("secCarreras", "secModalidad")
                     getCarrrera(urlApi, {
                         'key': 'ALIAT-162098695936825',
                         'medio': 'catalogo',
@@ -349,21 +361,34 @@
         })
 
         document.getElementById("modalidades").addEventListener('change', function () {
-            
-                if(this.value == "En Línea")
+
+             if (this.value == "En Línea")
                 {
-                    asgnacionPlan(document.getElementById("ebookNivel").value, document.getElementById("ebookCarrer").value, "CES " + marcaDefault,"On Aliat" );
+                    
+                 asgnacionPlan(document.getElementById("ebookNivel").value, document.getElementById("carreras").value == "" ? document.getElementById("ebookCarrer").value : document.getElementById("carreras").value, "CES " + marcaDefault,"On Aliat" );
+                   
                 }
                 else
                 {
 
                     const SepararPlan = this.value.split(" en ");     
-                    asgnacionPlan(document.getElementById("ebookNivel").value, document.getElementById("ebookCarrer").value, SepararPlan[1], SepararPlan[0] );
+                    asgnacionPlan(document.getElementById("ebookNivel").value, document.getElementById("carreras").value == "" ? document.getElementById("ebookCarrer").value : document.getElementById("carreras").value, SepararPlan[1], SepararPlan[0] );
                 }
+
         });
 
         document.getElementById("carreras").addEventListener('change', function () {
 
-            asgnacionPlan(document.getElementById("ebookNivel").value, this.value, "opcional", "opcional");  
+
+            secModalidad.style.display = "block"
+
+            getModalidad(urlApi, {
+                'key': 'ALIAT-162098695936825',
+                'medio': 'catalogo',
+                'opcion': 'plan-onaliat',
+                'marca': marcaDefault
+            });
+
+            
           
         });
