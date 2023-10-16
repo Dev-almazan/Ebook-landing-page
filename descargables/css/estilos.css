@@ -248,6 +248,7 @@ body,.ebooks {
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
     right: 10%;
+    
 }
 
 .ebooks2 form h2 {
@@ -424,8 +425,10 @@ body,.ebooks {
 
     .ebooks2 form {
         width: 32%;
-        top: 50%;
+        top: 49%;
         right: 7%;
+        overflow-y: auto;
+        max-height: 600px;
     }
 
     .ebooks2 form h2 {
@@ -709,6 +712,8 @@ body,.ebooks {
         left: 0;
         height: auto;
         align-items: center;
+        overflow-y: none;
+            max-height: auto;
     }
 
     
