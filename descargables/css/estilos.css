@@ -712,8 +712,8 @@ body,.ebooks {
         left: 0;
         height: auto;
         align-items: center;
-        overflow-y: none;
-            max-height: auto;
+        overflow-y: scroll;
+    max-height: 1200px;
     }
 
     
