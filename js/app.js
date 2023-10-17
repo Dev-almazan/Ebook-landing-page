@@ -6,7 +6,8 @@
         
             setTimeout(() => {
                 document.getElementById("cargando").style.display = "none";
-            }, 1500);
+                
+            }, 2000);
 
         
 
@@ -76,7 +77,7 @@
                                         <div class="bg" style="background-image: url('${datos[a].values.img.url}');">
                                         </div>
                                         <div class="iconos">
-                                                <h5><i class="fas fa-book"></i> Ebook</h5>
+                                                <h5><i class="fas fa-book"></i>  Ebook</h5>
                                         </div>
                                         <h5 class="title">${datos[a].values.titulo}</h5>
                                         <p class="text">${datos[a].values.descargas} descargas</p>

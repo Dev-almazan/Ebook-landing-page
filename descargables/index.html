@@ -6,6 +6,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <title>Ebooks</title>
     <link href="./css/estilos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -15,7 +17,7 @@
                 longdesc="Estudia" />
         </div>
         <header id="navBar">
-            <a href="">
+            <a href="../">
                 <img id="imgNav" alt="Universidades en linea" longdesc="Universidades en linea"
                     title="Universidades en linea" />
             </a>
@@ -45,9 +47,6 @@
                     <form id="FormSubmit">
                         <h2>Descarga</h2>
                         <h3>El Ebook gratuito</h3>
-                        <p>¡REGÍSTRATE Y SERÁ TUYO!</p>
-                        
-
                         <!--  inputs requeridos Form-->
                        
                         <input type="hidden" id="categoria" disabled>
@@ -55,6 +54,10 @@
                         <input type="hidden" id="modalidad" disabled>
                         <input type="hidden" id="campus" disabled>
                         <input type="hidden" id="url" disabled>
+                        <!--  inputs opcionales Form  -->
+                        
+                        <input type="hidden" id="ebookNivel" disabled>
+                        <input type="hidden" id="ebookCarrer" disabled>
 
                         <div class="form-gp">
                             <label class="label-gp">Nombre completo</label>
@@ -83,18 +86,18 @@
                             <span class="error "></span>
                         </div>
 
-                        <!--  inputs opcionales Form  -->
-                        
-                        <input type="hidden" id="ebookNivel" disabled>
-                        <input type="hidden" id="ebookCarrer" disabled>
-                        <div class="form-gp" id="secCarreras">
-                            <label class="label-gp">¿Qué carrera te gustaría?</label>
+                      
+
+                        <div class="form-gp " id="secCarreras" >
+                            <label class="label-gp ">¿Qué carrera te gustaría?</label>
                             <select id="carreras" class="input-gp">
                                 <option value="">Seleccione una opción</option>
                             </select>
                             <span class="error "></span>
                         </div>
-                        <div class="form-gp" id="secModalidad">
+
+                        
+                        <div class="form-gp " id="secModalidad" >
                             <label class="label-gp">¿Qué modalidad te gustaría?</label>
                             <select id="modalidades" class="input-gp">
                                 <option value="">Seleccione una opción</option>

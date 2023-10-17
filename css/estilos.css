@@ -71,6 +71,15 @@ body
     width: 100%;
 }
 
+.sec-0 h2{
+    
+        text-align: center;
+        font: normal normal bold 2em Lato;
+        letter-spacing: 0px;
+        color: #13427A;
+        padding: 2% 0%;
+}
+
 #buscador
 {
     padding: .8% 2%;    
@@ -160,11 +169,10 @@ body
 }
 .tarjeta
 {
-        background-color: #ffffff;
+    background-color: #ffffff;
     border: solid 1px transparent;
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
-        border-radius: 1rem;
-        transition: ease-in-out .4s;
+    border-radius: 1rem;
+    transition: ease-in-out .4s;
     padding: 4%;
     box-sizing: border-box;
 }
@@ -172,8 +180,8 @@ body
 .tarjeta:hover
 {
     transition: ease-in-out .2s ;
-    border: 1px solid #cf5c3c;
-    box-shadow: 0 .5rem 1rem rgba(255, 99, 42, 0.388) !important;
+    border: 1px solid transparent;
+    box-shadow: 0 .5rem 1rem rgba(255, 99, 42, 0.542) !important;
 }
 
 
@@ -190,7 +198,7 @@ body
 {
     color: #13427A;
     font: normal normal bold 1.3em Lato;
-    padding: 2% 0% 0% 0%;
+    padding: 3.5% 0% .5% 0%;
     text-align: left;
 }
 
@@ -206,7 +214,7 @@ body
  color: azure;
  width: 100%;
  font-size: 1.2em;
- padding:3% 0%;
+ 
  max-width: 100%;
  border-radius: 10px;
 font: bolder 1.3em Lato;
@@ -226,23 +234,31 @@ border: 1px solid transparent;
 {
     background: #000000a7 0% 0% no-repeat padding-box;
     border-radius: 5px;
-    padding: 2% 0%;
+    padding: .2% 1%;
     text-align: center;
-    width: 50%;
+    width: max-content;
     margin: 0 auto;
-    position: relative;
-    bottom: 45%;
-    left: -35%;
+    position: absolute;
+    margin-top: -10%;
+    margin-left: -3%;
     display: grid;
     align-content: center;
     align-self: center;
     box-sizing: border-box;
+    vertical-align: center;
+    align-items: center;
+    display: grid;
 }
 
 .tarjeta>.iconos h5{
    
     color: #FFFFFF;
 font: normal 1.25em Lato;
+align-self: center;
+    box-sizing: border-box;
+    vertical-align: center;
+    align-items: center;
+    
 }
 
 /*Laptos dimensiones*/
@@ -265,7 +281,7 @@ font: normal 1.25em Lato;
 
 .tarjeta>.title {
     font: normal normal bold 1.1em Lato;
-    padding: 0 0% 0% 0% !important;
+    padding: 3.5% 0% .5% 0%;
     margin: 0 !important;
 }
 
@@ -276,44 +292,31 @@ font: normal 1.25em Lato;
 }
 .tarjeta>.bg {
     height: 11rem;
-    
     border-radius: 15px;
 }
-.tarjeta>.btn {
+.tarjeta > .btn {
     background-color: #13427A;
     color: azure;
     width: 100%;
-   
-    padding: 3% 0%;
     max-width: 100%;
     border-radius: 10px;
     font: bolder 1.1em Lato;
     border-radius: 10px;
     opacity: 1;
 }
-.tarjeta>.iconos {
-    background: #000000a7 0% 0% no-repeat padding-box;
-    border-radius: 5px;
-    padding: 0% 0%;
-    text-align: center;
-    width: 40%;
-    margin: 0 auto;
-    position: relative;
-    bottom: 42%;
-    right: -45%;
-    display: grid;
-    align-content: center;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-    height: 2rem;
-}
+
 
 .tarjeta>.iconos h5 {
 
     align-items: center;
     color: #FFFFFF;
     font: normal 1em Lato;
+}
+.tarjeta>.iconos {
+    
+    margin-top: -12%;
+    margin-left: -3%;
+   
 }
 }
 
@@ -331,6 +334,12 @@ font: normal 1.25em Lato;
     grid-template-columns: repeat(2, 1fr);
  }
 
+ .tarjeta>.iconos {
+
+     margin-top: -16%;
+     margin-left: -3%;
+
+ }
         
  
 }
@@ -338,6 +347,9 @@ font: normal 1.25em Lato;
 /*Celulares dimensiones*/
 @media screen and (max-width:750px) {
 
+.sec-0 h2 {
+        font: normal normal bold 1.5em Lato;
+    }
 
 .ebooks3 {
     width: 100%;
@@ -396,23 +408,7 @@ font: normal 1.25em Lato;
     opacity: 1;
 }
 
-.tarjeta>.iconos {
-    background: #000000a7 0% 0% no-repeat padding-box;
-    border-radius: 5px;
-    padding: 0% 0%;
-    text-align: center;
-    width: 30%;
-    margin: 0 auto;
-    position: relative;
-    bottom: 42%;
-    right: -45%;
-    display: grid;
-    align-content: center;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-    height: 1.8rem;
-}
+
 
 .tarjeta>.iconos h5 {
 
@@ -442,5 +438,21 @@ font: normal 1.25em Lato;
     transition: all .9s;
     color: rgb(48, 131, 194) !important;
     font: normal 1.2em Lato;
+}
+
+.tarjeta>.iconos {
+    justify-self: center;
+    margin-top: -47%;
+    margin-left: -6%;
+    padding: .5% 3%;
+}
+.tarjeta>.bg {
+    height: 13rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    background-color: #0070b9;
+    
 }
 }

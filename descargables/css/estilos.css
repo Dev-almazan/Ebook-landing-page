@@ -8,6 +8,16 @@
 
 /* componentes generales*/
 
+#secCarreras, #secModalidad
+{
+    display: none;
+}
+
+html
+{
+    font-family: Lato !important;
+}
+
 .resaltes {
     color: #212529;
     background-color: #fff;
@@ -20,10 +30,6 @@
 }
 
 
-#secModalidad, #secCarreras
-{
-    display: none;
-}
 
 body,.ebooks {
     padding: 0;
@@ -37,6 +43,7 @@ body,.ebooks {
     z-index: 999;
 
 }
+
 
 #cargando img {
     position: fixed;
@@ -309,9 +316,17 @@ body,.ebooks {
     color: #1f2730;
 }
 
-.label-gp {
+.input-gp option
+{
+        font: normal 1.1em Lato !important;
+        margin-bottom: 2%;
+        color: #13427A;
+        text-align: left;
+
+    }
+.label-gp  {
     font: normal 1.1em Lato;
-    margin-bottom: 2%;
+    padding-bottom: .2em !important;
     color: #13427A;
     text-align: left;
 }
@@ -429,6 +444,7 @@ body,.ebooks {
         right: 7%;
         overflow-y: auto;
         max-height: 600px;
+        padding: .5% .5%;
     }
 
     .ebooks2 form h2 {
@@ -461,7 +477,7 @@ body,.ebooks {
 
     .label-gp {
         font: normal 1.1em Lato;
-        margin-bottom: 2%;
+        
         color: #13427A;
         text-align: left;
     }
@@ -472,7 +488,7 @@ body,.ebooks {
     }
 
     #submitForm {
-        padding: 2% 0%;
+        padding: 2.3% 0%;
         text-align: center;
         background: #EA5329 0% 0% no-repeat padding-box;
         border-radius: 5px;
@@ -576,7 +592,7 @@ body,.ebooks {
 
     .label-gp {
         font: normal 1.1em Lato;
-        margin-bottom: 2%;
+       
         color: #13427A;
         text-align: left;
     }

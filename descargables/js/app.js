@@ -107,7 +107,8 @@
         
         setTimeout(() => {
             document.getElementById("cargando").style.display = "none";
-        }, 700);
+            
+        }, 1500);
 
         switch (document.domain) {
             case 'www.etac.edu.mx':
