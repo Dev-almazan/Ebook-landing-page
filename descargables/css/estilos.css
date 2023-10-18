@@ -8,7 +8,7 @@
 
 /* componentes generales*/
 
-#secCarreras, #secModalidad
+#secCarreras, #secModalidad, #btnModal, #iconM, #iconO
 {
     display: none;
 }
@@ -68,6 +68,7 @@ body,.ebooks {
         transform: rotate(359deg);
     }
 }
+
 /* Barra navegacion */
 #navBar {
 

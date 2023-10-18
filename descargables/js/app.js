@@ -1,6 +1,6 @@
 
 
-        let marcaDefault;
+        let marcaDefaults;
         let img;
         const urlApi = 'https://aliatuniversidades.com.mx/ONALIAT/API/hubspot/';
         const parametrosGet = window.location.search;
@@ -64,7 +64,39 @@
 
                         if (respuesta.status == 200) {
 
-                            window.location.href = document.getElementById("url").value;
+                            respuesta.json().then((dataResponse) => {
+
+                                
+
+                                document.getElementById("btnModal").click();
+
+                                document.getElementById("verificacion").addEventListener('input', function() {
+
+                                    
+                                    if (dataResponse.codigo_ver == this.value)
+                                    {
+
+
+                                        setTimeout(() => {
+                                            window.location.href = document.getElementById("url").value;
+                                        }, 1000);
+                                       
+
+                                        document.getElementById("iconM").style.display ="block";
+                                        document.getElementById("iconO").style.display = "none";
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("iconM").style.display = "none";
+                                        document.getElementById("iconO").style.display = "block";
+                                    }
+                                });
+
+
+                            });
+
+                            
+                           
                         }
                         else {
                             console.log(respuesta.ok);
@@ -84,6 +116,41 @@
 
 
         }
+
+
+            const UpdateForm = (url, datos) => {
+
+                fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify(datos),
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                }).then((respuesta) => {
+
+                    if (respuesta.status == 200) {
+
+                        console.log(respuesta.ok);
+
+                    }
+                    else {
+                        console.log(respuesta.ok);
+                        console.log(respuesta.status);
+                        respuesta.json().then((data) => {
+
+                            alert(data);
+                        });
+                    }
+
+                })
+                    .catch((error) => {
+
+                        console.log(error);
+
+                    });
+
+
+            }
 
         const mostrarSelect = (mostrar,ocultar)=>
         {
@@ -112,31 +179,31 @@
 
         switch (document.domain) {
             case 'www.etac.edu.mx':
-                marcaDefault = "ETAC";
+                marcaDefaults = "ETAC";
                 img = "https://www.aliatuniversidades.com.mx/hubfs/l_etac.svg";
                 break;
             case 'www.utan.edu.mx':
-                marcaDefault = "UTAN";
+                marcaDefaults = "UTAN";
                 img = "https://www.aliatuniversidades.com.mx/hubfs/l_utan.svg";
                 break;
             case 'www.unea.edu.mx':
-                marcaDefault = "UNEA";
+                marcaDefaults = "UNEA";
                 img = "https://www.aliatuniversidades.com.mx/hubfs/l_unea.svg";
                 break;
             case 'www.uvg.edu.mx':
-                marcaDefault = "UVG";
+                marcaDefaults = "UVG";
                 img = "https://www.aliatuniversidades.com.mx/hubfs/l_uvg.svg";
                 break;
             case 'www.soycest.mx':
-                marcaDefault = "CEST";
+                marcaDefaults = "CEST";
                 img = "https://www.aliatuniversidades.com.mx/hubfs/l_cest.svg";
                 break;
             case 'www.universidadlaconcordia.edu.mx':
-                marcaDefault = "LA CONCORDIA"
+                marcaDefaults = "LA CONCORDIA"
                 img = "https://www.aliatuniversidades.com.mx/hubfs/l_ulc.svg";
                 break;
             default:
-                marcaDefault = "ETAC";
+                marcaDefaults = "ETAC";
                 img = "https://www.aliatuniversidades.com.mx/hubfs/l_etac.svg";
             break;
 
@@ -245,7 +312,9 @@
 
                         const resultData = dataGet.filter(dataGet => dataGet.nivel == document.getElementById("ebookNivel").value && dataGet.carrera == carreDEf);
 
-                        console.log(resultData)
+                        //console.log(resultData)
+
+                        
                         /* 1- guardamos valores de modalidad y campus */
 
                         for (let i = 0; i < resultData.length; i++) {
@@ -398,7 +467,7 @@
                         'key': 'ALIAT-162098695936825',
                         'medio': 'catalogo',
                         'opcion': 'plan-onaliat',
-                        'marca': marcaDefault
+                        'marca': marcaDefaults
                     });
 
                 break;
@@ -419,7 +488,7 @@
                         'key': 'ALIAT-162098695936825',
                         'medio': 'catalogo',
                         'opcion': 'plan-onaliat',
-                        'marca': marcaDefault
+                        'marca': marcaDefaults
                     });
 
                     
@@ -448,7 +517,7 @@
              if (this.value == "En Línea")
                 {
                     
-                 asgnacionPlan(document.getElementById("ebookNivel").value, document.getElementById("carreras").value == "" ? document.getElementById("ebookCarrer").value : document.getElementById("carreras").value, "CES " + marcaDefault,"On Aliat" );
+                 asgnacionPlan(document.getElementById("ebookNivel").value, document.getElementById("carreras").value == "" ? document.getElementById("ebookCarrer").value : document.getElementById("carreras").value, "CES " + marcaDefaults,"On Aliat" );
                    
                 }
                 else
@@ -472,7 +541,7 @@
                 'key': 'ALIAT-162098695936825',
                 'medio': 'catalogo',
                 'opcion': 'plan-onaliat',
-                'marca': marcaDefault
+                'marca': marcaDefaults
             },document.getElementById('pdf'));
 
             
@@ -532,7 +601,7 @@
                         alertas("", 0);
                         submitForm(urlApi, {
                             key: 'ALIAT-162098695936825',
-                            marca: marcaDefault,
+                            marca: marcaDefaults,
                             medio: 'organico-ebook',
                             nombre: nombre,
                             correo: correo,

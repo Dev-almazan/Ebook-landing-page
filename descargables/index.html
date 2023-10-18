@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/fonts.css" rel="stylesheet">
     <title>Ebooks</title>
+    <link href="../css/mdb.css  " rel="stylesheet">
     <link href="./css/estilos.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link href="../css/mdb.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />  
+    
 </head>
 <body>
 
@@ -86,7 +87,6 @@
                             <span class="error "></span>
                         </div>
 
-                      
 
                         <div class="form-gp " id="secCarreras" >
                             <label class="label-gp ">¿Qué carrera te gustaría?</label>
@@ -125,7 +125,39 @@
 
         </div>
     
+             
+    <!-- Button trigger modal -->
+    <button type="button"  data-mdb-toggle="modal" data-mdb-target="#modalV" id="btnModal"></button>
 
+    <!-- Modal -->
+    <div class="modal top fade" id="modalV" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-mdb-backdrop="true" data-mdb-keyboard="true">
+        <div class="modal-dialog modal-dialog-centered text-center d-flex justify-content-center">
+            <div class="modal-content w-75">
+                <div class="modal-body p-4">
+                    <img src="https://www.aliatuniversidades.com.mx/hubfs/loader.png" alt="avatar"
+                        class="rounded-circle position-absolute top-0  translate-middle"   />
+                    <form>
+                        <div>
+                            <h5 class="pt-4">Codigo de Verificación</h5>
+                            <p>Para descargar el contendio , ingrese el código de 4 dígitos que se envió a su correo electrónico</p>
+    
+                            <!-- password input -->
+                            <div class="form-outline ">
+                                <i class="fas fa-check trailing " id="iconM"></i>
+                                <i class="fas fa-arrows-rotate rotate trailing " id="iconO"></i>
+                                <input type="tel" maxlength="4" minlength="4" id="verificacion" value=""  class="form-control form-icon-trailing" />
+                                <label class="form-label" for="form1">Ingresar código</label>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
         <script type="text/javascript" src="./js/app.js"></script>
+        <script type="text/javascript" src="../js/mdb.js"></script>
 </body>
 </html>
