@@ -66,7 +66,7 @@
 
                             respuesta.json().then((dataResponse) => {
 
-                                
+                                console.log(dataResponse)
 
                                 document.getElementById("btnModal").click();
 
@@ -77,9 +77,24 @@
                                     {
 
 
+                                        UpdateForm(urlApi, {
+                                            key: 'ALIAT-162098695936825',
+                                            marca: marcaDefaults,
+                                            medio: 'organico-ebook',
+                                            nombre: document.getElementById('nombre').value,
+                                            correo: document.getElementById('correo').value,
+                                            telefono: document.getElementById('telefono').value,
+                                            momento: document.getElementById('mAcademico').value,
+                                            categoria: document.getElementById('categoria').value,
+                                            carrera: document.getElementById('carrera').value,
+                                            campus: document.getElementById('campus').value,
+                                            modalidad: document.getElementById('modalidad').value,
+                                            email_verificado: "Sí"
+                                        });
+
                                         setTimeout(() => {
                                             window.location.href = document.getElementById("url").value;
-                                        }, 1000);
+                                        }, 1500);
                                        
 
                                         document.getElementById("iconM").style.display ="block";
@@ -130,7 +145,7 @@
 
                     if (respuesta.status == 200) {
 
-                        console.log(respuesta.ok);
+                        console.log(respuesta.json());
 
                     }
                     else {
@@ -138,7 +153,7 @@
                         console.log(respuesta.status);
                         respuesta.json().then((data) => {
 
-                            alert(data);
+                            console.log(data);
                         });
                     }
 
@@ -610,7 +625,8 @@
                             categoria: document.getElementById('categoria').value,
                             carrera: document.getElementById('carrera').value,
                             campus: document.getElementById('campus').value,
-                            modalidad: document.getElementById('modalidad').value
+                            modalidad: document.getElementById('modalidad').value,
+                            email_verificado: "No"
                         });
                     }
 

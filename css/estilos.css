@@ -71,6 +71,14 @@ body
     width: 100%;
 }
 
+.sec-0 > p{
+    font: normal normal normal 1.2em Lato;
+    text-align: center;
+    padding: 0% 4% 2% 4%;
+    letter-spacing: 0px;
+    color: #13427A;
+    opacity: 1;
+}
 .sec-0 h2{
     
         text-align: center;
@@ -272,6 +280,15 @@ align-self: center;
            
         }
 
+.sec-0 > p {
+    font: normal normal normal 1.1em Lato;
+    text-align: center;
+    padding: 0% 4% 1% 4%;
+    letter-spacing: 0px;
+    color: #13427A;
+    opacity: 1;
+}
+
 .sec-1 {
     grid-gap: 2cm;
     max-width: 75%;
@@ -350,6 +367,14 @@ align-self: center;
 .sec-0 h2 {
         font: normal normal bold 1.5em Lato;
     }
+.sec-0>p {
+    font: normal normal normal .9em Lato;
+    text-align: center;
+    padding: 0% 2% 1% 2%;
+    letter-spacing: 0px;
+    color: #13427A;
+    opacity: 1;
+}
 
 .ebooks3 {
     width: 100%;
