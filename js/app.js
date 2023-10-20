@@ -152,3 +152,19 @@
          
 
         });
+
+        window.addEventListener("scroll", function() {
+
+
+            if (this.scrollY < 800)
+            {
+                document.getElementById("btnTop").style.display= "none";
+           
+            }   
+            else
+            {
+                document.getElementById("btnTop").style.display = "block";
+                
+            }
+            
+        });

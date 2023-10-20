@@ -131,7 +131,19 @@ body
     
 }
 
+.redirect {
+    position: fixed;
+    right: 3%;
+    bottom: 8.5%;
+    display: none;
+}
 
+ .redirect i {
+    color: #13427A;
+    font-size: 2.8em;
+    cursor: pointer;
+
+}
 /* Footer */
 
 .ebooks3 {
@@ -273,7 +285,19 @@ align-self: center;
 @media screen and (max-width:1650px) {
 
   
+.redirect {
+        position: fixed;
+        right: 3%;
+        bottom: 8.9%;
+        display: none;
+    }
 
+    .redirect i {
+        color: #13427A;
+        font-size: 2.4em;
+        cursor: pointer;
+
+    }
         .sec-0 {
             padding: 4% 17% 1.5% 17%;
             width: 100%;
@@ -363,6 +387,20 @@ align-self: center;
 
 /*Celulares dimensiones*/
 @media screen and (max-width:750px) {
+
+    .redirect {
+            position: fixed;
+            right: 1.3%;
+            bottom: 4%;
+            display: none;
+        }
+    
+        .redirect i {
+            color: #13427A;
+            font-size: 2em;
+            cursor: pointer;
+    
+        }
 
 .sec-0 h2 {
         font: normal normal bold 1.5em Lato;
