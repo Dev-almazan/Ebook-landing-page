@@ -1,53 +1,13 @@
 
-        let marcaDefault ;
-        let img;
-        const url = 'https://aliatuniversidades.com.mx/ONALIAT/API/hubspot/';
-        document.getElementById("year").innerText = new Date().getFullYear();
-        
+        let marcaDefault = "ETAC";
+        let img = "https://www.aliatuniversidades.com.mx/hubfs/l_etac.svg";
+        const url = 'https://comunicacionesaliat.com/api/hubspot/';
+        document.getElementById("year").innerText = new Date().getFullYear();   
             setTimeout(() => {
                 document.getElementById("cargando").style.display = "none";
-                
-            }, 2000);
+            },1000);
 
-        
-
-
-
-
-        /*Funciones generales */
-            switch (document.domain) 
-            {
-                        case 'www.etac.edu.mx':
-                            marcaDefault = "ETAC";
-                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_etac.svg";
-                        break;
-                        case 'www.utan.edu.mx':
-                            marcaDefault = "UTAN";
-                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_utan.svg";
-                        break;
-                        case 'www.unea.edu.mx':
-                            marcaDefault = "UNEA";
-                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_unea.svg";
-                        break;
-                        case 'www.uvg.edu.mx':
-                            marcaDefault = "UVG";
-                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_uvg.svg";
-                        break;
-                        case 'www.soycest.mx':
-                            marcaDefault = "CEST";
-                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_cest.svg";
-                        break;
-                        case 'www.universidadlaconcordia.edu.mx':
-                            marcaDefault = "LA CONCORDIA"
-                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_ulc.svg";
-                        break;
-                        default:
-                            marcaDefault = "ETAC";
-                            img = "https://www.aliatuniversidades.com.mx/hubfs/l_etac.svg";
-                        break;
-
-            }
-
+            /*Funciones generales */
             document.getElementById("imgNav").src = img;
 
             const getData =(url, parametros)=> {
@@ -55,7 +15,8 @@
                 fetch(url + parametros, {
                     method: 'GET',
                     headers: {
-                        'content-type': 'application/json'
+                        'content-type': 'application/json',
+                        'Authorization': 'Bearer 2ee90da8-c02e-4c3d-9700-d6200016ee75'
                     }
                 }).then((respuesta) => {
 
@@ -74,20 +35,17 @@
                                     secEbook.innerHTML += 
                                     `   
                                         <div class="tarjeta" data-plan="${datos[a].values.titulo} ${datos[a].values.carrera}" >
-                                        <div class="bg" style="background-image: url('${datos[a].values.img.url}');">
+                                            <div class="bg" style="background-image: url('${datos[a].values.img.url}');">
+                                            <div class="iconos">
+                                                    <h5><i class="fas fa-book"></i>  Ebook</h5>
+                                            </div>
+                                            </div>
+                                            <h5 class="title">${datos[a].values.titulo}</h5>
+                                            <p>Descubre por qué la firma digital y la gestión documental son más importantes que nunca.</p>
+                                            <a href="descargables/?ebook=${datos[a].id}" class="btn">DESCARGA GRATIS</a>
                                         </div>
-                                        <div class="iconos">
-                                                <h5><i class="fas fa-book"></i>  Ebook</h5>
-                                        </div>
-                                        <h5 class="title">${datos[a].values.titulo}</h5>
-                                        <p class="text">${datos[a].values.descargas} descargas</p>
-                                        <a href="descargables/?ebook=${datos[a].id}" class="btn">Lo quiero</a>
-                                
-                                    </div>
                                     `
                                 }
-
-
                             });
                         }
                         else 
