@@ -34,11 +34,8 @@
                                 {
                                     secEbook.innerHTML += 
                                     `   
-                                        <div class="tarjeta" data-plan="${datos[a].values.titulo} ${datos[a].values.carrera}" >
+                                        <div class="tarjeta" plan="E-book Consejos ${datos[a].values.carrera} ${datos[a].values.titulo}"  >
                                             <div class="bg" style="background-image: url('${datos[a].values.img.url}');">
-                                            <div class="iconos">
-                                                    <h5><i class="fas fa-book"></i>  Ebook</h5>
-                                            </div>
                                             </div>
                                             <h5 class="title">${datos[a].values.titulo}</h5>
                                             <p>Descubre por qué la firma digital y la gestión documental son más importantes que nunca.</p>
@@ -63,7 +60,29 @@
             }
 
        
-
+        function searchItem(value, tipo) {
+                const alerta = document.getElementById("alerta");
+                let stringBuscador = value;
+                let arrayBusquedas = [];
+                document.querySelectorAll('.tarjeta').forEach(function (div) {
+                    let busqueda = div.getAttribute(tipo).toUpperCase().indexOf(stringBuscador.toUpperCase())
+                    arrayBusquedas.push(busqueda)
+                    if (busqueda < 0) {
+                        div.style.display = "none";
+                    }
+                    else {
+                        div.style.display = "";
+                    }
+                });
+                const found = arrayBusquedas.find((element) => element >= 0);
+                if (found == undefined) {
+                    alerta.style.display = "block";
+                }
+                else {
+                    alerta.style.display = "none";
+                }
+                arrayBusquedas = [];
+            }
         
         
         /*  Funcion general para traer data parametro marca = a dominio  */
@@ -73,43 +92,11 @@
 
         /*Eventos del Dom  */
 
-        document.getElementById("buscador").addEventListener("keyup", function () {
-
-            const alerta = document.getElementById("alerta");
-
-            let stringBuscador = this.value;
-
-            let arrayBusquedas = [];  
-            
-                    document.querySelectorAll('.tarjeta').forEach(function (div) {
-                       
-                        let busqueda = div.getAttribute("data-plan").toUpperCase().indexOf(stringBuscador.toUpperCase())
-                        arrayBusquedas.push(busqueda)
-
-                        if (busqueda < 0) {
-                            div.style.display = "none";
-                        }
-                        else {
-                            div.style.display = "";
-                        }
-                    });
-
-            const found = arrayBusquedas.find((element) => element >= 0);
-
-            if (found == undefined) 
-            {
-                alerta.style.display = "block";
-            }
-            else
-            {
-                alerta.style.display = "none";
-            }
-
-            arrayBusquedas = [];    
-            
-         
-
+        document.getElementById("buscador").addEventListener("keyup",function(){
+            // 1. Llama a filterItem con el ID del input y el valor actual
+            filterItem("buscador", this.value);
         });
+   
 
         window.addEventListener("scroll", function() {
 
@@ -126,3 +113,58 @@
             }
             
         });
+
+        function filterItem(elementId, valueToSet){
+            // 1. Actualiza el valor del input oculto de forma más genérica
+            // Usamos 'elementId' para el ID del input que se va a actualizar
+            document.getElementById(elementId).value = valueToSet;
+
+            // 2. Simplifica la obtención de valores y manejo de "todos"
+            // Usamos el operador ternario para asignar un string vacío si el valor es "todos"
+            const contentType = document.getElementById("content-type").value === "todos" ? "" : document.getElementById("content-type").value;
+            const theme = document.getElementById("theme").value === "todos" ? "" : document.getElementById("theme").value;
+            const career = document.getElementById("career").value === "todos" ? "" : document.getElementById("career").value;
+            const buscador = document.getElementById("buscador").value === "todos" ? "" : document.getElementById("buscador").value;
+
+            // 3. Construye el término de búsqueda de forma dinámica
+            // Filtramos los valores vacíos y luego los unimos con un espacio
+            const searchTerms = [contentType, theme, career,buscador].filter(term => term !== "").join(" ");
+            // 4. Llama a searchItem con el término de búsqueda
+            searchItem(searchTerms,'plan');
+           
+        }
+
+
+        function activeList(element) { // El segundo parámetro 'li' no es necesario aquí
+            const listItems = document.querySelectorAll(element);
+
+            listItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Remueve la clase 'active' de todos los elementos 'li'
+                    listItems.forEach(li => {
+                        li.classList.remove('active');
+                        const svgInLi = li.querySelector('svg'); // Encuentra el SVG dentro de este li
+                        if (svgInLi) {
+                            svgInLi.classList.remove('active'); // Remueve la clase 'active' del SVG también
+                        }
+                    });
+
+                    // Agrega la clase 'active' al elemento 'li' en el que se hizo clic
+                    item.classList.add('active');
+
+                    // Agrega la clase 'active' al SVG dentro del li en el que se hizo clic
+                    const svgInsideClickedLi = item.querySelector('svg');
+                    if (svgInsideClickedLi) {
+                        svgInsideClickedLi.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        activeList(".content-type li","li");
+        activeList(".theme li", "li");     
+        activeList(".career li", "li");
+
+ 
+    
+

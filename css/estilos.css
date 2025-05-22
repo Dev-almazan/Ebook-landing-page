@@ -1,12 +1,23 @@
 
 :root{
    --bg-white: #FFFFFF;
-   --bg-azul: #13427A;
-   --bg-narjanja: #FF5728;
+   --bg-azul: #2F71B1;
+   --bg-narjanja: #EA5329;
    --bg-amarillo: #F99B1C;
+   --bg-dark :#000000 ;
+   --bg-whitev2: #F9FCFF;
    --fn-h1: 2.5em;
+   --font-family: 'Lato', sans-serif;
 }
 
+* {
+    font-family: var(--font-family) !important;
+    
+}	
+
+body{
+    background: var(--bg-whitev2) !important;
+}
 
 
 #cargando {
@@ -57,17 +68,8 @@
     transition: all 2s;
     padding: 2%;
 }
-body
-{
-    background-color: #F9FCFF !important;
-    font: normal normal bold 3em Lato;
-}
 
-.buscador-icon
-{
-    color: rgb(25, 75, 113) !important;
-    font-size: 1.4em;
-}
+
 
 .sec-0
 {
@@ -98,7 +100,7 @@ body
 }
 
 .sec-0 img{
-    width: 15rem;
+    width: 13%;
     height: auto;
     margin-right: auto;
     justify-content: center;
@@ -111,9 +113,24 @@ body
 
 #buscador
 {
-  padding: .5rem 0;  
+  padding: .5rem 1rem ;
+  box-sizing: border-box;  
   background: #FFFFFF;
 }
+
+.buscador-icon {
+    color: rgb(25, 75, 113) !important;
+    width: 25px;
+    height: 25px;
+    padding: .1rem;
+    box-sizing: border-box;
+}
+
+::placeholder {
+    color: var(--bg-azul) !important;
+    font-family: var(--font-family);
+    font-style: italic;
+ }
 
 
 .form-label {
@@ -157,11 +174,11 @@ body
     display: none;
 }
 
- .redirect i {
+ .redirect svg {
     color: #13427A;
-    font-size: 2.8em;
     cursor: pointer;
-
+    width: 60px;
+    height: 60px;
 }
 /* Footer */
 
@@ -199,6 +216,7 @@ body
     padding: 2rem 0;
     width: 65%;
     margin: 0 auto;
+    background-color:var(--bg-whitev2);
 }
 
 .grid-ebooks > div:nth-child(1) {
@@ -344,33 +362,51 @@ font: normal .9em Lato;
     margin-bottom: 5px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: .9em;
     transition: background-color 0.2s ease;
 }
+
+
 
 .filter-options li:hover {
     background-color: #f0f0f0;
 }
 
-.filter-options li.active {
+.filter-options .active {
     color: #fff;
-    font-weight: bold;
+    font-weight: bold; 
 }
 
+
+
 /* Specific colors for "Todos" buttons */
-.filter-section.content-type .active {
+.filter-section .content-type .active {
     background-color: var(--bg-azul);
+    fill :var(--bg-white) !important;
     /* Blue for content type */
 }
 
-.filter-section.theme .active {
+.filter-section .theme .active {
     background-color: var(--bg-narjanja);
+    fill: var(--bg-white) !important;
     /* Orange-red for theme */
 }
 
-.filter-section.career .active {
+.filter-section .career .active {
     background-color: var(--bg-amarillo);
+    transition: all .9s;
     /* Orange for career */
 }
+
+
+.filter-section  svg{
+    width: 35px ;
+    height: 35px ;
+    padding: 7px;
+    fill: var(--bg-dark) ;
+    box-sizing: border-box;
+}
+
 
 
 .filter-options img {
@@ -391,7 +427,7 @@ font: normal .9em Lato;
         display: none;
     }
 
-    .redirect i {
+    .redirect svg {
         color: #13427A;
         font-size: 2.4em;
         cursor: pointer;
@@ -494,7 +530,7 @@ font: normal .9em Lato;
             display: none;
         }
     
-        .redirect i {
+        .redirect svg {
             color: #13427A;
             font-size: 2em;
             cursor: pointer;
