@@ -1,11 +1,11 @@
 
-        let marcaDefault = "ETAC";
+
         let img = "https://www.aliatuniversidades.com.mx/hubfs/l_etac.svg";
         const url = 'https://comunicacionesaliat.com/api/hubspot/';
         document.getElementById("year").innerText = new Date().getFullYear();   
             setTimeout(() => {
                 document.getElementById("cargando").style.display = "none";
-            },1000);
+            },800);
 
             /*Funciones generales */
             document.getElementById("imgNav").src = img;
@@ -87,7 +87,7 @@
         
         /*  Funcion general para traer data parametro marca = a dominio  */
 
-        getData(url, "?hdb=ebooks&marca=" + marcaDefault); 
+        getData(url,"?hdb=ebooks&marca=ETAC"); 
 
 
         /*Eventos del Dom  */
@@ -145,7 +145,7 @@
                         li.classList.remove('active');
                         const svgInLi = li.querySelector('svg'); // Encuentra el SVG dentro de este li
                         if (svgInLi) {
-                            svgInLi.classList.remove('active'); // Remueve la clase 'active' del SVG también
+                            svgInLi.classList.remove('active__svg'); // Remueve la clase 'active' del SVG también
                         }
                     });
 
@@ -155,7 +155,7 @@
                     // Agrega la clase 'active' al SVG dentro del li en el que se hizo clic
                     const svgInsideClickedLi = item.querySelector('svg');
                     if (svgInsideClickedLi) {
-                        svgInsideClickedLi.classList.add('active');
+                        svgInsideClickedLi.classList.add('active__svg');
                     }
                 });
             });
@@ -165,6 +165,33 @@
         activeList(".theme li", "li");     
         activeList(".career li", "li");
 
+
+
+
+// Función para manejar el estado 'open'
+function handleDetailsState() {
+    // Define el ancho máximo para considerar "móvil" (puedes ajustar este valor)
+    const mobileBreakpoint = 900;
+    // Obtiene todos los 'details' que podrían estar abiertos
+    const detailsElements = document.querySelectorAll('details.filter-section');
+    // Comprueba el ancho actual de la ventana
+    if (window.innerWidth < mobileBreakpoint) {
+        // Si es móvil, recorre los elementos y quita 'open' si lo tienen
+        detailsElements.forEach(detail => {
+            if (detail.hasAttribute('open')) {
+                detail.removeAttribute('open');
+            }
+        });
+    }  
+}
+
+// Ejecuta la función cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', handleDetailsState);
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(handleDetailsState, 150);
+});
  
     
 

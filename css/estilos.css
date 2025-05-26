@@ -1,6 +1,6 @@
 
 :root{
-   --bg-white: #FFFFFF;
+   --bg-white: whitesmoke;
    --bg-azul: #2F71B1;
    --bg-narjanja: #EA5329;
    --bg-amarillo: #F99B1C;
@@ -17,6 +17,15 @@
 
 body{
     background: var(--bg-whitev2) !important;
+}
+
+.active__svg{
+    fill: var(--bg-white) !important;
+}
+
+.element-hide {
+    display: none !important;
+
 }
 
 
@@ -76,8 +85,11 @@ body{
     padding: 4rem 20%;
     box-sizing: border-box;
     width: 100%;
-    background: transparent linear-gradient(102deg, #1A1A1A 0%, var(--unnamed-color-2f71b1) 100%) 0% 0% no-repeat padding-box;
-    background: transparent linear-gradient(102deg, #1A1A1A 0%, #2F71B1 100%) 0% 0% no-repeat padding-box;
+    background-image: url(https://www.unea.edu.mx/hubfs/public/Grupo%201210.svg), linear-gradient(102deg, #1A1A1A 0%, #2F71B1 100%);
+    background-position: 90% 50%;
+    background-size: auto, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-color: #1A1A1A;
     opacity: 1;
 }
 
@@ -99,38 +111,47 @@ body{
         padding: 2% 0%;
 }
 
-.sec-0 img{
-    width: 13%;
-    height: auto;
-    margin-right: auto;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-50%,50%);
-    z-index:- 1;
-}
+
 
 #buscador
 {
   padding: .5rem 1rem ;
-  box-sizing: border-box;  
-  background: #FFFFFF;
+  box-sizing: border-box;
+
+    border: 1px solid #E0E0E0;border-color: var(--bg-azul);
+    color: var(--bg-azul) !important;
+}
+
+
+#buscador::placeholder {
+    color: var(--bg-azul) !important;
+        font-family: var(--font-family);
+        font-style: italic;
+        font-size: 1.1em;
+        font-weight: 400;
+}
+
+.form-outline .form-control~.form-notch div{
+    outline: 0 !important;
+    border:0 !important;
+    color: var(--bg-azul) !important;
+}
+
+.form-outline:focus .form-control:focus input:focus {
+    box-shadow: none !important;
+    outline: 0 !important;
+    border: 0 !important;
 }
 
 .buscador-icon {
-    color: rgb(25, 75, 113) !important;
+    color:var(--bg-azul) !important;
     width: 25px;
     height: 25px;
     padding: .1rem;
     box-sizing: border-box;
 }
 
-::placeholder {
-    color: var(--bg-azul) !important;
-    font-family: var(--font-family);
-    font-style: italic;
- }
+
 
 
 .form-label {
@@ -213,8 +234,7 @@ body{
 
 .grid-ebooks
 {
-    padding: 2rem 0;
-    width: 65%;
+    width: 75%;
     margin: 0 auto;
     background-color:var(--bg-whitev2);
 }
@@ -222,13 +242,14 @@ body{
 .grid-ebooks > div:nth-child(1) {
     margin: 2rem 0;
 }
+
 /* Secciones */
 
 .sec-1
 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
+    grid-gap: 70px;
     max-width: 100%;
     margin: 0 auto;
     padding: 2% 0% 7% 0%;
@@ -327,26 +348,28 @@ font: normal .9em Lato;
     box-sizing: border-box;
     background-color: var(--bg-white);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.127);
     padding: 1rem;
     font-family: 'Lato';
 }
 
 .filter-header {
-    color: #333;
+    color: var(--bg-azul);
     font-size: 1.1em;
+    font-weight: lighter;
     margin-bottom: 15px;
-    font-weight: bold;
 }
 
 .filter-section {
     margin-bottom: 20px;
+  
 }
 
-.filter-section h3 {
-    font-size: 1em;
-    color: #666;
-    margin-bottom: 10px;
+.filter-section summary {
+    font-size: 1.1em;
+    color: var(--bg-dark);
+    padding: .5rem 0;
+    box-sizing: border-box;
 }
 
 .filter-options ul {
@@ -358,11 +381,13 @@ font: normal .9em Lato;
 .filter-options li {
     display: flex;
     align-items: center;
-    padding: 8px 10px;
-    margin-bottom: 5px;
+    padding: 10px 10px;
+
     border-radius: 5px;
     cursor: pointer;
-    font-size: .9em;
+    font-size: 1em;
+    font-weight: 400;
+    color: var(--bg-dark);
     transition: background-color 0.2s ease;
 }
 
@@ -380,21 +405,21 @@ font: normal .9em Lato;
 
 
 /* Specific colors for "Todos" buttons */
-.filter-section .content-type .active {
+.filter-section .content-type .active ,.filter-section .content-type .active svg {
     background-color: var(--bg-azul);
     fill :var(--bg-white) !important;
     /* Blue for content type */
 }
 
-.filter-section .theme .active {
+.filter-section .theme .active svg,.filter-section .theme .active {
     background-color: var(--bg-narjanja);
     fill: var(--bg-white) !important;
     /* Orange-red for theme */
 }
 
-.filter-section .career .active {
+.filter-section .career .active svg,.filter-section .career .active   {
     background-color: var(--bg-amarillo);
-    transition: all .9s;
+    fill: var(--bg-white) !important;
     /* Orange for career */
 }
 
@@ -416,8 +441,28 @@ font: normal .9em Lato;
     /* In a real scenario, these would be SVG icons for better scalability and styling */
 }
 
+.filter-container summary{
+    cursor:default;
+}
+
+summary::marker 
+{
+    list-style-type: square; 
+    color: var(--bg-white);
+}
+
+.filter-container .arrow{
+    display: none;
+}
+
 /*Laptos dimensiones*/
 @media screen and (max-width:1650px) {
+
+    .grid-ebooks {
+            padding: 0 !important;
+            width: 80%;   
+            padding-bottom: 5rem !important;
+  }   
 
   
 .redirect {
@@ -434,25 +479,24 @@ font: normal .9em Lato;
 
     }
         .sec-0 {
-            padding: 4% 17% 1.5% 17%;
+            padding: 4.5rem 0;
+            box-sizing: border-box;
             width: 100%;
-           
+            background-position:98% 50%;
         }
 
+                  
+
 .sec-0 > p {
-    font: normal normal normal 1.1em Lato;
-    text-align: center;
-    padding: 0% 4% 1% 4%;
-    letter-spacing: 0px;
-    color: #13427A;
-    opacity: 1;
+   width: 70%;
 }
 
-.sec-1 {
-    grid-gap: 2cm;
-    max-width: 75%;
-    margin: 0 auto;
-    padding: 2% 0% 10% 0%;
+.sec-0 h1 {
+    padding: 0%;
+}
+
+.sec-1{
+    grid-gap: 50px;
 }
 
 .tarjeta>.title {
@@ -496,161 +540,142 @@ font: normal .9em Lato;
 }
 }
 
-/*Tablets dimensiones*/
-@media screen and (max-width:1100px) {
+@media screen and (max-width:1450px) {
 
-    .sec-0 {
-            padding: 4% 20% 2.5% 20%;
-            width: 100%;
+    :root {
+            --fn-h1: 2em;
+          }
+    .sec-1 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 70px;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 2% 0% 7% 0%;
+            font: normal normal bold Lato;
+            box-sizing: border-box;  
+         }
+
+                 .grid-ebooks {
+                     width: 85%;
+                     margin: 0 auto;    
+                      }     
                 
-        }
- .sec-1 {
-     grid-gap: 1.5cm;
-     max-width: 70%;
-    grid-template-columns: repeat(2, 1fr);
- }
+                                          .sec-0 > p {
+                                              font: normal normal normal 1em Lato;
+                                              text-align: center;
+                                              letter-spacing: 0px;
+                                              color: var(--bg-white);
+                                              opacity: 1;
+                                              width: 80%;
+                                              margin: 0 auto;
+                                          }
+                    
+                                          .sec-0 h1 {
+                                              font: normal normal bold var(--fn-h1) Lato;
+                                              padding: 2% 0%;
+                                          }
+}   
 
- .tarjeta>.iconos {
 
-     margin-top: -16%;
-     margin-left: -3%;
-
- }
-        
- 
-}
 
 /*Celulares dimensiones*/
-@media screen and (max-width:750px) {
+@media screen and (max-width:1000px) {
 
-    .redirect {
-            position: fixed;
-            right: 1.3%;
-            bottom: 4%;
-            display: none;
-        }
-    
-        .redirect svg {
-            color: #13427A;
-            font-size: 2em;
-            cursor: pointer;
-    
+    :root {
+            --fn-h1: 1.5em;
         }
 
-.sec-0 h2 {
-        font: normal normal bold 1.5em Lato;
-    }
-.sec-0>p {
-    font: normal normal normal .9em Lato;
-    text-align: center;
-    padding: 0% 2% 1% 2%;
-    letter-spacing: 0px;
-    color: #13427A;
-    opacity: 1;
-}
+        .sec-0>p {
+            font: normal normal normal 1em Lato;
+            text-align: center;
+            color: var(--bg-white);
+            opacity: 1;
+            width: 90%;
+            margin: 0 auto;
+            line-height: 27px;
+            font-weight: lighter !important;
+        }
 
-.ebooks3 {
-    width: 100%;
-    background-color: #13427A;
-    backface-visibility: hidden !important;
-    grid-template-columns: repeat(1, 1fr);
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    box-sizing: border-box;
-    padding: 3% 3%;
-}
-.ebooks3 h5 {
-    color: #FFFFFF;
-    font: normal .9em Lato;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-}
+
+                .grid-ebooks {
+                    width: 80%;
+                    margin: 0 auto;
+                }
+
     .sec-0 {
-            padding: 8% 5% 5% 5%;
+            padding: 3rem 0;
+            box-sizing: border-box;
             width: 100%;
-            box-sizing: border-box;
+            background-position: 90% 10%;
+        
         }
-    
-        .sec-1 {
-            grid-gap: 1cm;
-            max-width: 85%;
+
+    .sec-1 {
+            display: grid;
             grid-template-columns: repeat(1, 1fr);
-         
+            grid-gap: 30px;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 2% 0 ;
+            font: normal normal bold Lato;
             box-sizing: border-box;
-            padding: 2% 0% 20% 0% !important;
         }
 
-.tarjeta>.text {
-    font: lighter 1em Lato;
-    padding: 4% 0% 5% 0%;
-    margin: 0 !important;
-}
-
-.tarjeta>.bg {
-    height: 11rem;
-    border-radius: 15px;
-}
-
-.tarjeta>.btn {
-    background-color: #13427A;
-    color: azure;
+ 
+/*filter container*/
+.filter-container {
     width: 100%;
-
-    padding: 3% 0%;
-    max-width: 100%;
-    border-radius: 10px;
-    font: bolder 1em Lato;
-    border-radius: 10px;
-    opacity: 1;
-}
-
-
-
-.tarjeta>.iconos h5 {
-
-    align-items: center;
-    color: #FFFFFF;
-    font: normal .9em Lato;
-}
-#buscador {
-    padding: 2% 2%;
-    background: #FFFFFF;
-}
-
-#navBar img {
-    padding: 1.6%;
-    height: auto;
-    z-index: 1;
     margin: 0 auto;
-    justify-content: center;
-    width:50%;
-
-}
-#alerta {
-    width: 100%;
-    padding: 40% 2% 40% 2%;
-    text-align: center;
-    display: none;
-    transition: all .9s;
-    color: rgb(48, 131, 194) !important;
-    font: normal 1.2em Lato;
+    box-sizing: border-box;
+    background-color: var(--bg-whitev2);
+    border-radius: 0;
+    box-shadow:none;
+    padding: 1rem;
+    font-family: 'Lato';
 }
 
-.tarjeta>.iconos {
-    justify-self: center;
-    margin-top: -47%;
-    margin-left: -6%;
-    padding: .5% 3%;
+.filter-container summary {
+    box-shadow: 3px 3px 6px #00000029;
+    border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1em;
+        padding-left: 1rem;
+        font-weight: 500;
+        box-sizing: border-box;
 }
-.tarjeta>.bg {
-    height: 13rem;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 15px;
-    background-color: #0070b9;
-    
+
+
+summary::marker {
+    color: var(--bg-dark);
+
 }
+
+.filter-container .arrow {
+    display: grid;
+}
+
+.grid-ebooks>div:nth-child(1) {
+    margin: 2rem 0 .5rem 0;
+}
+
+.redirect svg {
+    color: #13427A;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+}
+
+    .ebooks3 {
+        width: 100%;
+        padding: 1rem 0;
+        border-top: 2px solid;
+        font-size: .8em;
+    }
+
+        .sec-0   
+        {
+               background-size:  120px 120px, cover;
+        }           
 }
