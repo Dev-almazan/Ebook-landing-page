@@ -1,12 +1,15 @@
 
 :root{
    --bg-white: whitesmoke;
+   --bg-azul-o:#13427A;
    --bg-azul: #2F71B1;
+    --bg-azulc: #51B9E9;
    --bg-narjanja: #EA5329;
    --bg-amarillo: #F99B1C;
    --bg-dark :#000000 ;
    --bg-whitev2: #F9FCFF;
    --fn-h1: 2.5em;
+   --fn-p: 1.16em;
    --font-family: 'Lato', sans-serif;
 }
 
@@ -17,6 +20,41 @@
 
 body{
     background: var(--bg-whitev2) !important;
+}
+
+aliat-ebook{
+    padding: 2rem 0;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.resaltes{
+    border:2px solid rgb(207, 22, 22) !important ;
+    transition: all .1s  !important;
+    
+}
+
+.error{
+    color: rgb(207, 22, 22) !important;
+    font-size: var(1.1em);
+    font-weight: 600;
+    font-family: var(--font-family);
+    transition: all .2s !important;
+}
+
+.swal2-container
+{
+    z-index: 9999 !important;
+    font-family: var(--font-family) !important;
+}
+
+.swal2-confirm
+{
+    background-color: var(--bg-azulc) !important;
+    color: var(--bg-white) !important;
+    font-size: 1.1em !important;
+    font-weight: 600 !important;
 }
 
 .active__svg{
@@ -65,12 +103,15 @@ body{
 #alerta
 {
     width: 100%;
-    padding: 8% 0% 15% 0%;
     text-align: center;
     display: none;
     transition: all .9s;
-    color: rgb(25, 75, 113) !important;
+    color: var(--bg-azul) !important;
+    font-size: var(--fn-h1);
+    font-weight: 500;
+    font-family: var(--font-family);
 }
+
 
 /* componentes generales*/
 .tarjeta {
@@ -82,14 +123,14 @@ body{
 
 .sec-0
 {
-    padding: 4rem 20%;
+    padding: 7rem 20%;
     box-sizing: border-box;
     width: 100%;
     background-image: url(https://www.unea.edu.mx/hubfs/public/Grupo%201210.svg), linear-gradient(102deg, #1A1A1A 0%, #2F71B1 100%);
     background-position: 90% 50%;
     background-size: auto, cover;
     background-repeat: no-repeat, no-repeat;
-    background-color: #1A1A1A;
+    background-color: #b71b1b;
     opacity: 1;
 }
 
@@ -111,7 +152,27 @@ body{
         padding: 2% 0%;
 }
 
+.navbar-brand
+{
+    margin: 0 auto;
+}
 
+.navbar-toggler
+{
+    font-size: var(--fn-p);
+    font-weight: 500;
+    color: var(--bg-azul-o);
+    text-decoration: none;
+    align-items: center;
+}
+
+.navbar-toggler svg{
+    fill: var(--bg-amarillo) !important;
+    width: 30px;
+    height: 30px;
+    padding-right: .1rem;
+    box-sizing: border-box;
+}
 
 #buscador
 {
@@ -171,21 +232,13 @@ body{
     border-image-slice: 1;
     border-image-source: linear-gradient(90deg, #0070b9 16.6%, #ef4438 16.6% 33.3%, #5091cd 33.3% 49.6%, #ea5329 49.6% 66.2%, #52b9e9 66.2% 82.8%, #f99b1c 82.8%);
 }
-#navBar a {
-    justify-content: center;
-    margin: 0 ;
-    width: 100%;
-    display: grid;
-    padding: .7% 0%;
-}
+
 #navBar a img {
-   
     height: auto;
     z-index: 1;
     margin:  0 auto ;
     justify-content: center;
-    width:70%;
-    
+    width:10rem;
 }
 
 .redirect {
@@ -382,7 +435,6 @@ font: normal .9em Lato;
     display: flex;
     align-items: center;
     padding: 10px 10px;
-
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
@@ -390,7 +442,6 @@ font: normal .9em Lato;
     color: var(--bg-dark);
     transition: background-color 0.2s ease;
 }
-
 
 
 .filter-options li:hover {
@@ -401,6 +452,7 @@ font: normal .9em Lato;
     color: #fff;
     font-weight: bold; 
 }
+
 
 
 
@@ -455,6 +507,130 @@ summary::marker
     display: none;
 }
 
+/*section descarbales*/
+
+.ebooks{
+    background: linear-gradient(145deg, #1A1A1A 0%, #2F71B1 100%), white;
+    background-size: 100% 75%,  100% 75%;
+    background-position: 0% 0%, 0% 100%;
+    background-repeat: no-repeat;
+    color: var(--bg-white);
+    padding: 8rem 15rem 4rem 15rem;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap:80px;
+    align-items: center;
+}
+
+.ebooks div:nth-child(2) {
+    margin-left: auto;
+}
+
+.ebooks h1 {
+    font: normal normal bold var(--fn-h1) Lato;
+    color: var(--bg-white);
+    opacity: 1;
+    text-align: left;
+}
+
+.ebooks p {
+    font: normal normal normal var(--fn-p) Lato;
+    color: var(--bg-white);
+    opacity: 1;
+    line-height: 30px;
+    text-align: left;
+    padding-top: 1rem;
+}
+
+.ebooks form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    background-color: var(--bg-whitev2);
+    border-radius: 10px;
+    padding:  1.5rem 2rem;
+    box-sizing: border-box;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.ebooks form h2 {
+    font: normal normal bold var(--fn-h1) Lato;
+    color: var(--bg-azulc);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.ebooks form h3 {
+    font: normal normal bold 1.5em Lato;
+    color: var(--bg-azul-o);
+    text-align: center;
+}
+
+.ebooks form label {
+    font: normal normal normal 1.16em Lato;
+    color: var(--bg-azul-o);
+    padding: 1rem 0 .5rem 0;
+}
+
+.ebooks form input, .ebooks form select{
+    width: 100%;
+    height: 2.8rem;
+    box-sizing: border-box;
+    border: 1px solid #E0E0E0;
+    border-color: var(--bg-azul);
+    color: #2c2c2c !important;
+    border-radius: 5px;
+    font: normal normal normal 1.16em Lato;
+    text-align: left;
+}
+.ebooks form input:focus,.ebooks form select:focus{
+    border-color: var(--bg-azul);
+    outline-color: var(--bg-azul);
+}
+
+.ebooks form select{
+    font-size: 1em !important;
+}
+
+.ebooks form input[type=checkbox]
+{
+    height: 2rem !important;
+     background-color: var(--bg-azul-o);
+    color: var(--bg-azul);
+}
+
+.ebooks form .checkbox {
+    display: grid;
+    color: var(--bg-azul-o);
+    grid-template-columns: 8% 92%;
+    grid-gap: 10px;
+    margin: 1rem 0;
+    padding: .6rem;
+    box-sizing: border-box;
+    border-radius: 5px;
+    align-items: center;
+    font: normal normal normal 1.34em Lato;
+}
+
+
+.ebooks form .checkbox a{
+    color: var(--bg-azulc);
+    text-decoration: none;
+}
+
+.ebooks form button {
+    width: 100%;
+    height: 3rem;
+    background-color: var(--bg-azulc);
+    color: var(--bg-white);
+    border-radius: 5px;
+    font: normal normal bold 1.16em Lato;
+    border: none;
+    cursor: pointer;
+}
+
 /*Laptos dimensiones*/
 @media screen and (max-width:1650px) {
 
@@ -479,7 +655,7 @@ summary::marker
 
     }
         .sec-0 {
-            padding: 4.5rem 0;
+            padding: 7rem 0 4rem 0;
             box-sizing: border-box;
             width: 100%;
             background-position:98% 50%;
@@ -538,6 +714,18 @@ summary::marker
     margin-left: -3%;
    
 }
+
+
+.ebooks {
+    padding: 8rem 2em 4rem 5rem;
+    grid-gap: 20px;
+}
+
+.ebooks form {
+    width: 80%;
+    padding:  2rem;
+    margin: 0 auto;
+}
 }
 
 @media screen and (max-width:1450px) {
@@ -580,10 +768,11 @@ summary::marker
 
 
 /*Celulares dimensiones*/
-@media screen and (max-width:1000px) {
+@media screen and (max-width:1040px) {
 
     :root {
             --fn-h1: 1.5em;
+            --fn-p: .95em;
         }
 
         .sec-0>p {
@@ -604,10 +793,10 @@ summary::marker
                 }
 
     .sec-0 {
-            padding: 3rem 0;
+            padding: 8rem 0  4rem 0;
             box-sizing: border-box;
             width: 100%;
-            background-position: 90% 10%;
+            background-position: 90% 25%;
         
         }
 
@@ -677,5 +866,40 @@ summary::marker {
         .sec-0   
         {
                background-size:  120px 120px, cover;
-        }           
+        }   
+        
+                #navBar a img {
+                    
+                    width: 7rem;     
+                  } 
+      .ebooks{
+        padding: 8rem 2.5rem 4rem 2.5rem;
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-gap:1px;
+    }                  
+        .ebooks form {
+        width:100%;
+         padding:  1.5rem 2rem;
+         box-sizing: border-box;
+         margin-top:2rem;
+    }
+
+        .ebooks form {
+            font-size: .9em !important;  
+            padding: 1.5rem 1rem !important; 
+        }
+
+                .navbar-toggler svg {
+                    width: 25px;
+                    height: 25px;
+                }
+
+                .ebooks form label{
+                    font: normal normal bold .95em Lato;
+                }
+               
+                .ebooks form .checkbox {
+                    font: normal normal normal .9em Lato;
+                }
 }

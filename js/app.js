@@ -1,15 +1,5 @@
 
-
-        let img = "https://www.aliatuniversidades.com.mx/hubfs/l_etac.svg";
-        const url = 'https://comunicacionesaliat.com/api/hubspot/';
-        document.getElementById("year").innerText = new Date().getFullYear();   
-            setTimeout(() => {
-                document.getElementById("cargando").style.display = "none";
-            },800);
-
-            /*Funciones generales */
-            document.getElementById("imgNav").src = img;
-
+            const url = 'https://comunicacionesaliat.com/api/hubspot/';
             const getData =(url, parametros)=> {
 
                 fetch(url + parametros, {
@@ -193,5 +183,42 @@ window.addEventListener('resize', () => {
     resizeTimeout = setTimeout(handleDetailsState, 150);
 });
  
+
+
+class formulario {
+    constructor(formId) {
+        this.form = document.getElementById(formId);
+    }
+
+    validateForm() {
+        const inputs = this.form.querySelectorAll("input");
+        let isValid = true;
+
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                input.classList.add("error");
+                isValid = false;
+            } else {
+                input.classList.remove("error");
+            }
+        });
+
+        if (isValid) {
+            this.submitForm();
+        }
+    }
+
+    submitForm() {
+        // Aquí puedes agregar la lógica para enviar el formulario
+        console.log("Formulario enviado correctamente.");
+    }
+}
     
 
+
+const form =  new formulario("Ebs");
+
+document.getElementById("btnEs").addEventListener("click", function(e) {
+    e.preventDefault();
+       console.log("Botón de envío presionado");
+})

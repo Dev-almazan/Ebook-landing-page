@@ -6,163 +6,137 @@
     <link href="../css/fonts.css" rel="stylesheet">
     <title>Ebooks</title>
     <link href="../css/mdb.css  " rel="stylesheet">
-    <link href="./css/estilos.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />  
-    
+    <link href="../css/estilos.css" rel="stylesheet"> 
 </head>
 <body>
+    <style>
+        .container   {
+            padding-right: 12rem;
+            box-sizing: border-box;
+        }
 
+        @media screen and (max-width:1000px) {
+            
+        .container   {
+            padding-right: 0;
+        }
+        .navbar-brand{
+            margin-left: 0 !important;
+        }
+        .navbar-toggler {
+            font-size: .9em;
+            padding-right: 2rem;
+            padding-left: .5rem;
+            box-sizing: border-box;
+        }
+        .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+    }
+    </style>
+        <nav class="navbar fixed-top" id="navBar">
+            <div class="container">
+                <a href="../"  class="navbar-toggler" type="button"    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg id="Grupo_1169" data-name="Grupo 1169" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" width="36.64" height="36.64" viewBox="0 0 36.64 36.64">
+                        <defs>
+                            <clipPath id="clip-path">
+                                <rect id="Rectángulo_905" data-name="Rectángulo 905" width="36.64" height="36.64" fill="#13427a" />
+                            </clipPath>
+                        </defs>
+                        <g id="Grupo_1168" data-name="Grupo 1168" clip-path="url(#clip-path)">
+                            <path id="Trazado_1838" data-name="Trazado 1838"
+                                d="M29.517,25.066v3.342H34.9a2.692,2.692,0,0,1,0,5.383H29.517v3.342a.845.845,0,0,1-1.444.6L22.04,31.7a.845.845,0,0,1,0-1.2l6.033-6.033a.845.845,0,0,1,1.444.6"
+                                transform="translate(-11.374 -12.64)" fill="#13427a" />
+                            <path id="Trazado_1839" data-name="Trazado 1839"
+                                d="M18.32,3.59A14.73,14.73,0,1,1,3.59,18.32,14.746,14.746,0,0,1,18.32,3.59m0-3.59A18.32,18.32,0,1,0,36.64,18.32,18.316,18.316,0,0,0,18.32,0"
+                                fill="#13427a" />
+                </g>                </svg> Volver a Descargables</a>
+                <a class="navbar-brand">
+                    <img src="https://www.aliatuniversidades.com.mx/hubfs/l_etac.svg" alt="Universidades en México"  longdesc="Universidades en México" title="Universidades en México" />
+                </a>
+            </div>  
+        </nav>
 
         <div id="cargando">
             <img src="https://www.aliatuniversidades.com.mx/hubfs/loader.png" alt="cargando..." class="rotate" title="cargando"
                 longdesc="Estudia" />
         </div>
 
-
-        <header id="navBar">
-            <a class="redirect" href="../">
-            <i class="far fa-circle-left"> </i>
-            <p class="desktop"> Volver a Descargables</p>
-            </a>
-            <a href="../">
-                <img id="imgNav" alt="Universidades en linea" longdesc="Universidades en linea"
-                    title="Universidades en linea" />
-            </a>
-        </header>
-
-        <div id="ebooks">
-           
-            <section class="ebooks1">
-                        <h1 id="titulo"></h1>
-                        <p id="descripcion"></p>
-            </section>
-
-            <section class="ebooks2">
-
-                <article>
-                    <div class="tarjeta" >
-                        <h2 id="h2Ebook">En este e-book encontrarás:</h2>
-                        <ul id="listEbook">
-                        </ul>
-                        <img id="imgEbook"  />
-                    </div>
-                </article>
-
-
-                <article>
-                    <form id="FormSubmit">
-                        <h2>Descarga</h2>
-                        <h3>El Ebook gratuito</h3>
-                        <!--  inputs requeridos Form-->
-                       
-                        <input type="hidden" id="categoria" disabled>
-                        <input type="hidden" id="carrera" disabled>
-                        <input type="hidden" id="modalidad" disabled>
-                        <input type="hidden" id="campus" disabled>
-                        <input type="hidden" id="url" disabled>
-                        <!--  inputs opcionales Form  -->
-                        
-                        <input type="hidden" id="ebookNivel" disabled>
-                        <input type="hidden" id="ebookCarrer" disabled>
-
-                        <div class="form-gp">
-                            <label class="label-gp">Nombre completo</label>
-                            <input type="text" id="nombre" class="input-gp" />
-                            <span class="error "></span>
-                        </div>
-                        <div class="form-gp">
-                            <label class="label-gp">Correo electrónico</label>
-                            <input type="email" id="correo" class="input-gp" />
-                            <span class="error "></span>
-                        </div>
-                        <div class="form-gp">
-                            <label class="label-gp">Número telefónico</label>
-                            <input type="text" id="telefono" class="input-gp" />
-                            <span class="error "></span>
-                        </div>
-                        <div class="form-gp">
-                            <label class="label-gp">¿Te interesa estudiar <span id="lbEbook"></span>?</label>
-                            <select id="mAcademico" class="input-gp">
-                                <option value="">Selecciona una opción</option>
-                                <option value="opcion1">Si, es mi primera opción</option>
-                                <option value="opcion2">Apenas voy cursando el bachillerato</option>
-                                <option value="opcion3">Me interesa otra carrera</option>
-                                <option value="opcion4">Ya estoy estudiando otra carrera</option>
-                            </select>
-                            <span class="error "></span>
-                        </div>
-
-
-                        <div class="form-gp " id="secCarreras" >
-                            <label class="label-gp ">¿Qué carrera te gustaría?</label>
-                            <select id="carreras" class="input-gp">
-                                <option value="">Seleccione una opción</option>
-                            </select>
-                            <span class="error "></span>
-                        </div>
-
-                        
-                        <div class="form-gp " id="secModalidad" >
-                            <label class="label-gp">¿Qué modalidad te gustaría?</label>
-                            <select id="modalidades" class="input-gp">
-                                <option value="">Seleccione una opción</option>
-                            </select>
-                            <span class="error "></span>
-                        </div>
-
-                        <div class="form-gp">
-                            <label class="label-gp"><input type="checkbox" id="aviso" checked /> Estoy de acuerdo con el aviso de privacidad y los términos y condiciones</label>
-                        </div>
-                        <div class="form-gp">
-                            <button type="submit" id="submitForm">¡RECIBIR MI MATERIAL!</button>
-                        </div>
-                    </form>
-                </article>
-
-
-            </section>
-
-                        <section class="ebooks3">
-                            <h5>&copy; Copyright <span id="year"></span>. Todos los derechos reservados <a target="_blank"
-                                    href="https://www.aliatuniversidades.com.mx/aliat"> Aliat
-                                    Universidades</a></h5>
-                        </section>
-
-        </div>
-    
-             
-    <!-- Button trigger modal -->
-    <button type="button"  data-mdb-toggle="modal" data-mdb-target="#modalV" id="btnModal"></button>
-
-    <!-- Modal -->
-    <div class="modal top fade" id="modalV" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        data-mdb-backdrop="true" data-mdb-keyboard="true">
-        <div class="modal-dialog modal-dialog-centered text-center d-flex justify-content-center">
-            <div class="modal-content w-75">
-                <div class="modal-body p-4">
-                    <img src="https://www.aliatuniversidades.com.mx/hubfs/loader.png" alt="avatar"
-                        class="rounded-circle position-absolute top-0  translate-middle"   />
-                    <form>
-                        <div>
-                            <h5 class="pt-4">Codigo de Verificación</h5>
-                            <p>Para descargar el contendio , ingrese el código de 4 dígitos que se envió a su correo electrónico</p>
-    
-                            <!-- password input -->
-                            <div class="form-outline ">
-                                <i class="fas fa-check trailing " id="iconM"></i>
-                                <i class="fas fa-arrows-rotate rotate trailing " id="iconO"></i>
-                                <input type="tel" maxlength="4" minlength="4" id="verificacion" value=""  class="form-control form-icon-trailing" />
-                                <label class="form-label" for="form1">Ingresar código</label>
-                            </div>
-
-                        </div>
-                    </form>
-                </div>
+        <section class="ebooks">
+            <div>
+                        <h1>Descubre qué carrera estudiar con esta guía gratuita + test vocacional</h1>
+                        <p>Elegir tu carrera universitaria no es cualquier cosa: es una decisión que puede definir tu futuro. Pero tranquilo, no
+                        estás solo. De hecho, el 70% de los universitarios en México se arrepienten de la carrera que eligieron. Para que tú no
+                        seas parte de esa estadística, creamos esta guía definitiva para elegir carrera.</p>
+                        <aliat-ebook pdf="https://www.aliatuniversidades.com.mx/hubfs/ebooks%20nurturing%20avanzado/Nurturing%20derecho%20ebook%20ETAC.pdf">
+                        </aliat-ebook>      
             </div>
-        </div>
-    </div>
-    <!-- Modal -->
-        <script type="text/javascript" src="./js/app.js"></script>
-        <script type="text/javascript" src="../js/mdb.js"></script>
+            <div>
+                <article>
+                    <form id="formLead" class="formulario">
+                        <input type="hidden" disabled  value="https://www.aliatuniversidades.com.mx/hubfs/La%20gu%C3%ADa%20para%20encontrar%20tu%20verdadera%20vocaci%C3%B3n%20profesional.pdf" id="ebook_e" />
+                        <h2>¡Descarga <br> GRATIS!</h2>
+                        <h3>¡Regístrate y será tuyo!</h3>
+                        <div class="form-gp">
+                            <label>Nombre completo</label>
+                            <input type="text" id="nombre_e"  class="form-i" />
+                            <span class="error"></span>
+                        </div>
+                        <div class="form-gp">
+                            <label>Correo electrónico</label>
+                            <input type="email" id="correo_e"  class="form-i"  />
+                            <span class="error"></span>
+                        </div>
+                        <div class="form-gp">
+                            <label>Número telefónico</label>
+                            <input type="number" id="telefono_e" class="form-i" />
+                            <span class="error"></span>
+                        </div>
+                        <div class="form-gp">
+                            <label class="label-gp">¿Tienes listo tu certificado de prepa?</label>
+                            <select  id="academico" class="form-i" >
+                                <option >Estudio la prepa, pero aún no tengo mi certificado.</option>
+                                <option selected>Tengo certificado de prepa y quiero estudiar una licenciatura.</option>
+                                <option>Estoy estudiando una licenciatura y quiero especializarme.</option>
+                            </select>
+                            <span class="error"></span>
+                        </div>
+                        <div class="form-gp">
+                            <div class="checkbox form-i" id="aviso"  >
+                                <input type="checkbox" id="aviso_e"   />
+                                <small>Acepto el <a href="" target="_blank">aviso de privacidad</a> y los <a href="" target="_blank">términos y condiciones</a></small>
+                            </div>
+                        </div>
+                        <div class="form-gp">
+                            <button type="submit" id="formLead_btn" >¡RECIBIR MI MATERIAL!</button>
+                        </div>
+                    </form>
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+    
+        <footer class="ebooks3">
+            <h5>&copy; Copyright <span id="year"></span>. Todos los derechos reservados <a target="_blank"
+                    href="https://www.aliatuniversidades.com.mx/aliat"> Aliat
+                    Universidades</a></h5>
+        </footer>
+
+                <script>
+                            document.getElementById("year").innerText = new Date().getFullYear();
+                            setTimeout(() => {
+                                document.getElementById("cargando").style.display = "none";
+                            }, 600);
+                </script>
+                <script type="text/javascript" src="../js/alert.js"></script>
+                <script type="text/javascript" src="../js/pdf.js"></script>
+                <script type="text/javascript" src="../js/form.js"></script>
+                <script type="text/javascript" src="../js/bookComponent.js"></script>
 </body>
 </html>
