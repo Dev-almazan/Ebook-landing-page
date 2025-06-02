@@ -6,9 +6,12 @@
     --bg-azulc: #51B9E9;
    --bg-narjanja: #EA5329;
    --bg-amarillo: #F99B1C;
-   --bg-dark :#000000 ;
+   --bg-dark :#232323 ;
    --bg-whitev2: #F9FCFF;
    --fn-h1: 2.5em;
+    --fn-h2: 2.2em;
+    --fn-h3: 1.4em;
+    --fn-li: 1.2em;
    --fn-p: 1.16em;
    --font-family: 'Lato', sans-serif;
 }
@@ -511,7 +514,7 @@ summary::marker
 
 .ebooks{
     background: linear-gradient(145deg, #1A1A1A 0%, #2F71B1 100%), white;
-    background-size: 100% 75%,  100% 75%;
+    background-size: 100% 70%,  100% 70%;
     background-position: 0% 0%, 0% 100%;
     background-repeat: no-repeat;
     color: var(--bg-white);
@@ -560,6 +563,10 @@ summary::marker
     color: var(--bg-azulc);
     text-align: center;
     text-transform: uppercase;
+}
+
+.ebooks form h2 > span {
+    font: normal normal bold 1.29em  Lato;
 }
 
 .ebooks form h3 {
@@ -630,6 +637,179 @@ summary::marker
     border: none;
     cursor: pointer;
 }
+
+
+/*Ebook listado*/
+
+.ebook__list {
+    width: 100%;
+    display: grid;
+    align-items: center;
+    padding: 3rem 15rem;
+    box-sizing: border-box;
+    background: transparent linear-gradient(145deg, #1A1A1A 0%, var(--unnamed-color-2f71b1) 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(145deg, #1A1A1A 0%, #2F71B1 100%) 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.ebook__list__title {
+    font: normal normal bold var(--fn-h2) Lato;
+    color: var(--bg-white);
+    text-align: center;
+}
+
+.ebook__list__columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    font-family: var(--font-family);
+    padding:2rem 0;
+    box-sizing: border-box  ;
+}
+
+.ebook__list__columns h2
+{
+    font: normal normal bold var(--fn-h3) Lato;
+    color: var(--bg-white);
+    text-align: left;
+    padding: 1rem 0;
+}
+
+.ebook__list__columns li {
+    font: normal normal normal var(--fn-li) Lato;
+    color: var(--bg-white);
+    line-height: 35px;
+}
+
+
+/*ebook info*/
+
+.ebook__info {
+    width: 100%;
+    display: grid;
+    align-items: center;
+    padding: 3rem 20rem 3rem 25rem;
+    box-sizing: border-box;
+    opacity: 1;
+    background-color: var(--bg-white);
+}
+
+.ebook__info__title  {
+    font: normal normal bold var(--fn-h2) Lato;
+    color: var(--bg-azul-o);
+    text-align: left;
+    padding: 1rem 0;
+}
+
+
+.ebook__info__text {
+    font: normal normal normal var(--fn-p) Lato;
+    color: var(--bg-azul-o);
+    padding-top: .5rem;
+}
+
+
+/*PREGUNTAS SECTION*/
+
+.preguntas__container{
+    background: transparent linear-gradient(145deg, #1A1A1A 0%, var(--unnamed-color-2f71b1) 100%) 0% 0% no-repeat padding-box;
+        background: transparent linear-gradient(145deg, #1A1A1A 0%, #2F71B1 100%) 0% 0% no-repeat padding-box;
+        opacity: 1;
+    width: 100%;
+    padding: 5rem 15rem ;
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+.preguntas__container h4 {
+    color: var(--bg-white);
+    text-align: center;
+    font-size: var(--fn-h2);
+    padding-bottom: 1.5rem;
+}
+
+.preguntas__container details {
+    background-color: var(--bg-white);
+    margin-bottom: 2rem;
+    padding: .7rem;
+    border-radius: 10px;
+}
+
+.preguntas__container summary {
+    color: var(--bg-azul-o);
+    font-family: var(--font-family);
+    font-size: var(--fn-li);
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 3rem;
+    box-sizing: border-box;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.preguntas__container details p {
+    color: var(--bg-dark);
+    font-family: var(--font-family);
+    font-size: var(--fn-p);
+    line-height: 35px;
+    padding-left: 3rem;
+    box-sizing: border-box;
+    font-weight: 500;
+}
+
+.preguntas__container svg {
+    padding: .4rem;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+
+.preguntas__container .arrow {
+    background-color: var(--bg-azul-o);
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+/* Ebook cta*/
+
+.ebook__cta{
+    background-color: var(--bg-white);
+    color:var(--bg-azul-o);
+    padding: 3rem 25rem;
+    box-sizing: border-box;
+    font-family: var(--font-family) ;
+    display: grid;
+    align-items: center;
+}
+
+.ebook__cta h3{
+    text-align: center;
+    font-weight: 800;
+    font-size: var(--fn-h2);
+    line-height: 55px;
+    padding-bottom: 1.5rem;
+}
+
+
+.ebook__cta a {
+    width: 20rem;
+    height: 3rem;
+    background-color: var(--bg-azulc);
+    color: var(--bg-white);
+    border-radius: 5px;
+    font: normal normal bold 1.16em Lato;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    margin:  0 auto;
+    text-align: center  ;
+}
+
 
 /*Laptos dimensiones*/
 @media screen and (max-width:1650px) {
@@ -722,10 +902,51 @@ summary::marker
 }
 
 .ebooks form {
-    width: 80%;
+    width: 65%;
     padding:  2rem;
     margin: 0 auto;
 }
+
+/*Ebook listado*/
+
+.ebook__list{
+    padding:  2em 6rem ;
+}
+
+.ebook__list__columns {
+    padding: 1rem 0;
+}
+
+.ebook__info {
+    padding: 2em 14rem 3rem 14rem;
+}
+
+.preguntas__container {
+ 
+    padding: 5em 6rem;
+
+}
+
+.ebook__cta {
+    padding: 2.5rem 16rem; 
+    box-sizing: border-box;
+}
+
+.ebook__cta a {
+    width: 20rem;
+    height: 3rem;
+    background-color: var(--bg-azulc);
+    color: var(--bg-white);
+    border-radius: 5px;
+    font: normal normal bold 1.16em Lato;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
 }
 
 @media screen and (max-width:1450px) {
@@ -772,6 +993,9 @@ summary::marker
 
     :root {
             --fn-h1: 1.5em;
+            --fn-h2: 1.2em;
+            --fn-h3: 1.1em;
+            --fn-li: .95em;
             --fn-p: .95em;
         }
 
@@ -873,11 +1097,29 @@ summary::marker {
                     width: 7rem;     
                   } 
       .ebooks{
-        padding: 8rem 2.5rem 4rem 2.5rem;
+        padding: 0;
         display: grid;
         grid-template-columns: repeat(1,1fr);
         grid-gap:1px;
-    }                  
+                background: var(--bg-whitev2) !important;
+                background-size: 100%;
+                background-position: 100%
+    }    
+
+        .ebooks > div:nth-child(1) {
+            background: transparent linear-gradient(159deg, #1A1A1A 0%, var(--unnamed-color-2f71b1) 100%) 0% 0% no-repeatpadding-box;
+            background: transparent linear-gradient(159deg, #1A1A1A 0%, #2F71B1 100%) 0% 0% no-repeat padding-box;
+                opacity: 1;
+            padding: 6rem 2rem 2rem 2rem;
+            box-sizing: border-box;
+        }
+    
+        .ebooks > div:nth-child(2) {
+            background-color: var(--bg-whitev2);
+            padding: 1rem 2rem 3rem 2rem;
+            box-sizing: border-box;
+        }    
+
         .ebooks form {
         width:100%;
          padding:  1.5rem 2rem;
@@ -889,6 +1131,10 @@ summary::marker {
             font-size: .9em !important;  
             padding: 1.5rem 1rem !important; 
         }
+                .ebooks form h2>span {
+                    font: normal normal bold 1.3em Lato;      
+                 }
+
 
                 .navbar-toggler svg {
                     width: 25px;
@@ -902,4 +1148,100 @@ summary::marker {
                 .ebooks form .checkbox {
                     font: normal normal normal .9em Lato;
                 }
+ 
+                .ebooks h1 {
+                    text-align: center;
+                }
+
+                
+    .ebooks p {
+        text-align: center;
+        font-weight: lighter;
+        color: var(--bg-whitev2);
+    } 
+    
+    .ebook__list   {
+        padding: 2rem 2.5rem;
+        box-sizing: border-box;
+    }
+
+         
+         .ebook__list__columns {
+         grid-template-columns: repeat(1, 1fr);
+     }
+
+         .ebook__info {
+             padding: 2rem 2.5rem;
+         }
+
+
+         .ebook__info__title {
+            text-align: center;
+            padding: 0;
+            padding-bottom: 1rem;
+         }
+         .ebook__info__text {
+             padding-bottom: .3rem;
+         }
+
+         .preguntas__container {
+            padding: 2rem ;
+            box-sizing: border-box;
+        }  
+        
+                .preguntas__container summary {
+                    color: var(--bg-azul-o);
+                    font-family: var(--font-family);
+                    font-size: 1.04em;
+                    line-height: 35px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding-left: .4rem;
+                    box-sizing: border-box;
+                    padding-top: .5rem;
+                    padding-bottom: .5rem;       
+                } 
+
+                .preguntas__container details {
+                    background-color: var(--bg-white);
+                    margin-bottom: 2rem;
+                    padding: .2rem;
+                    border-radius: 10px;
+                }    
+                
+                .preguntas__container details p {
+                    color: var(--bg-dark);
+                    font-family: var(--font-family);
+                    font-size: var(--fn-p);
+                    line-height: 35px;
+                    padding-left: .4rem;
+                    box-sizing: border-box;
+                    font-weight: 500;
+                }   
+                
+                
+            .ebook__cta {
+                padding: 3rem 2.5rem;
+                box-sizing: border-box;
+            }
+
+                        .ebook__cta h3 {
+                            line-height: 35px;
+                            }
+                
+            .ebook__cta a {
+                width: 100%;
+                 height: 3rem;
+                 background-color: var(--bg-azulc);
+                 color: var(--bg-white);
+                border-radius: 5px;
+                font: normal normal bold var(--fn-li) Lato;
+                 border: none;
+                 cursor: pointer;
+                display: grid;
+                align-items: center;
+                margin: 0 auto;
+                text-align: center;            
+               }                
 }

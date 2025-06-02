@@ -55,12 +55,12 @@ class FlippingBook extends HTMLElement {
 
                 .book-wrapper {
                     box-shadow: 0 0rem 0rem rgba(0, 0, 0, .15) !important;
-                    width: 20rem; /* Ajusta según necesidad */ 
-                    height: 25rem; /* Altura automática basada en el aspect-ratio */
+                    width: 20rem; /* Ancho fijo para el libro */
+                    height: 29em; /* Altura automática basada en el aspect-ratio */
                     aspect-ratio: 4 / 3; /* Proporción común para libros/presentaciones */
                     margin: 0 auto; /* Centrar y añadir margen */
                     perspective: 2500px; /* Añade perspectiva para el efecto 3D */
-                    border-left: 20px solid #ccc; /* Borde opcional */
+                 
                 }
 
                 .book {
@@ -79,8 +79,7 @@ class FlippingBook extends HTMLElement {
                     background-position: center;
                     background-repeat: no-repeat;
                     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                    border-top-right-radius:15px ;
-                    border-bottom-right-radius:15px ;
+                    border-radius:15px ;
                     overflow: hidden;
                     display: flex;
                     flex-direction: column;
@@ -159,6 +158,27 @@ class FlippingBook extends HTMLElement {
                     border: none;
                     z-index: 0; 
                 }
+
+                @media screen and (max-width:1250px) {
+                .book-wrapper {
+                    width: 30vw;
+                    height: 50vh;
+                }    
+
+                @media screen and (max-width:700px) {
+                .book-wrapper {
+                    width: 75vw;
+                    height: 50vh;
+                }
+                #next-btn {
+                    right: -20px; /* Posición fuera del libro para mejor clic */
+                }
+
+                #prev-btn {
+                    left: -20px; /* Posición fuera del libro */
+                }
+                
+            }
             </style>
             <div class="book-wrapper">
                 <div class="book">
@@ -171,12 +191,13 @@ class FlippingBook extends HTMLElement {
                         <div class="page-content"></div>
                     </div>
                 </div>
-                <div class="nav-button" id="prev-btn">
-                    <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="Anterior" style="transform: scaleX(-1);">
-                </div>
                 <div class="nav-button" id="next-btn">
                     <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="Siguiente">
                 </div>
+                <div class="nav-button" id="prev-btn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="Anterior" style="transform: scaleX(-1);">
+                </div>
+                
             </div>
         `;
     }

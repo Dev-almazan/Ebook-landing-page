@@ -49,6 +49,8 @@
 
             }
 
+            getData(url, "?hdb=ebooks&marca=ETAC"); 
+
        
         function searchItem(value, tipo) {
                 const alerta = document.getElementById("alerta");
@@ -77,7 +79,7 @@
         
         /*  Funcion general para traer data parametro marca = a dominio  */
 
-        getData(url,"?hdb=ebooks&marca=ETAC"); 
+       
 
 
         /*Eventos del Dom  */
